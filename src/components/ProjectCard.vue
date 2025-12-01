@@ -2,17 +2,22 @@
   <article class="card">
     <div class="card__header">
       <div>
-        <p class="label">Featured Build</p>
+        <p class="label">{{ project.label || 'From my previous site' }}</p>
         <h3>{{ project.title }}</h3>
         <p class="description">{{ project.description }}</p>
       </div>
       <a class="cta" :href="project.url" target="_blank" rel="noopener noreferrer">
-        View live ↗
+        {{ project.cta || 'View live ↗' }}
       </a>
     </div>
 
     <div class="card__preview">
-      <iframe :src="project.url" loading="lazy" title="Live preview" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+      <iframe
+        :src="project.url"
+        loading="lazy"
+        title="Live preview"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+      ></iframe>
     </div>
 
     <div class="card__footer">
