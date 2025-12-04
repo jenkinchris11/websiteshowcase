@@ -13,24 +13,6 @@
       </p>
     </header>
 
-    <section class="about" aria-label="Overview">
-      <article class="about__card">
-        <h2>What carried over</h2>
-        <ul>
-          <li>Project summaries, coursework highlights, and service descriptions from the legacy site.</li>
-          <li>Links to resume, GitHub work, and the same contact options you used before.</li>
-          <li>Responsive, accessible layout that mirrors the clean feel of the original design.</li>
-        </ul>
-      </article>
-      <article class="about__card">
-        <h2>How to explore</h2>
-        <p>
-          Each card below embeds a specific part of my old site so you can review the details without opening new tabs. If you
-          prefer, use the "View live" link on each card to open the full page directly.
-        </p>
-      </article>
-    </section>
-
     <section class="grid" aria-label="Website projects">
       <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
     </section>
