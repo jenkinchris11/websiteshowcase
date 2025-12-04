@@ -31,22 +31,6 @@
               </div>
             </div>
           </div>
-
-          <div class="hero__visual">
-            <div class="hero__marquee" aria-hidden="true">
-              <div class="hero__marquee-track">
-                <span v-for="index in 6" :key="index">Design · Develop · Ship ·</span>
-              </div>
-            </div>
-            <div class="hero__panel" role="presentation">
-              <div class="hero__parallax">
-                <div class="hero__layer hero__layer--accent"></div>
-                <div class="hero__layer hero__layer--card">
-                  <p class="hero__status">Currently booking for Q2 launches</p>
-                  <p class="hero__caption">Responsive creative tech with obsessive polish.</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
