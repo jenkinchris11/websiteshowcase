@@ -6,9 +6,9 @@
         <h3>{{ project.title }}</h3>
         <p class="description">{{ project.description }}</p>
       </div>
-      <a class="cta" :href="project.url" target="_blank" rel="noopener noreferrer">
+      <button class="cta" type="button" @click="openOverlay">
         {{ project.cta || 'View live ↗' }}
-      </a>
+      </button>
     </div>
 
     <div class="card__preview">
@@ -18,6 +18,12 @@
         title="Live preview"
         sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
       ></iframe>
+      <button
+        type="button"
+        class="card__preview-overlay"
+        @click="openOverlay"
+        :aria-label="`Open live preview of ${project.title}`"
+      ></button>
     </div>
 
     <div class="card__footer">
@@ -25,16 +31,36 @@
         <li v-for="tool in project.tools" :key="tool">{{ tool }}</li>
       </ul>
     </div>
+
+    <ProjectOverlay
+      :open="showOverlay"
+      :title="project.title"
+      :url="project.url"
+      @close="closeOverlay"
+    />
   </article>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import ProjectOverlay from './ProjectOverlay.vue'
+
 const props = defineProps({
   project: {
     type: Object,
     required: true,
   },
 })
+
+const showOverlay = ref(false)
+
+const openOverlay = () => {
+  showOverlay.value = true
+}
+
+const closeOverlay = () => {
+  showOverlay.value = false
+}
 </script>
 
 <style scoped>
@@ -92,6 +118,28 @@ h3 {
   height: 360px;
   border: none;
   background: #0a0f1c;
+  filter: saturate(0.92);
+}
+
+.card__preview-overlay {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(9, 12, 24, 0), rgba(9, 12, 24, 0.55));
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card__preview-overlay:hover,
+.card__preview-overlay:focus-visible {
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(9, 12, 24, 0.05), rgba(9, 12, 24, 0.65));
+  outline: none;
+}
+
+.card__preview-overlay:focus-visible {
+  box-shadow: 0 0 0 3px rgba(124, 155, 255, 0.5);
 }
 
 .card__footer {
@@ -123,10 +171,21 @@ h3 {
   color: #7c9bff;
   font-weight: 600;
   white-space: nowrap;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.cta:hover {
+.cta:hover,
+.cta:focus-visible {
   color: #9fc1ff;
+  outline: none;
+}
+
+.cta:focus-visible {
+  box-shadow: 0 0 0 3px rgba(124, 155, 255, 0.5);
+  border-radius: 6px;
 }
 
 @media (max-width: 768px) {
