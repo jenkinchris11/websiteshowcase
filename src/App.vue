@@ -2,16 +2,15 @@
   <main class="page">
     <header class="hero">
       <p class="eyebrow">Jenkin Programming</p>
-      <h1>My updated home for projects and services</h1>
       <p class="lede">
-        I've lifted the content from my previous site into this refreshed layout so you can explore my work, background, and
-        contact details without leaving the page. Use the embedded previews to browse the original sections while keeping the
-        navigation consistent.
+        Hi, My name is Chris Jenkin, and I have found myself here!
+        <br>
+        I have been programming for quite a while now, I started programming small games and websites, and eventually enrolled on a university course for Video Game Programming during this various coding languages and different disciplines were taught.
+        <br>
+        My time at university was majorly beneficial to my journey in computer programming, since then I have worked for a brilliant company called Envirovue as a software programmer which was a brilliant experience.
+        <br>
+        Now in my venture, I hope to make beautiful websites for you such as this one!
       </p>
-      <div class="meta">
-        <span>Legacy portfolio content, reorganized</span>
-        <span class="pill">Live previews from jenkinprogramming.netlify.app</span>
-      </div>
     </header>
 
     <section class="about" aria-label="Overview">
