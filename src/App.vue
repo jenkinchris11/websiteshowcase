@@ -198,7 +198,7 @@ import { projects } from './data/projects'
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   padding: 0 18px 28px;
   font-weight: 700;
