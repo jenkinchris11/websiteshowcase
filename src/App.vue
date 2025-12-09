@@ -1,37 +1,29 @@
 <template>
   <main class="page">
-    <header class="hero" aria-labelledby="intro-title">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__orb hero__orb--one"></div>
-        <div class="hero__orb hero__orb--two"></div>
-        <div class="hero__noise"></div>
+    <header class="hero-embed" aria-labelledby="hero-title">
+      <div class="embed__intro">
+        <p class="eyebrow">Featured experiment</p>
+        <h1 id="hero-title">Immersive hero from Robin Treur</h1>
+        <p class="lede">
+          The opening of this page now showcases the interactive hero directly from the referenced CodePen so you can
+          explore the experience exactly as designed.
+        </p>
       </div>
 
-      <div class="hero__content">
-        <p class="eyebrow">Jenkin Programming</p>
-        <div class="hero__grid">
-          <div class="hero__copy">
-            <h1 id="intro-title">Crafting purposeful digital experiences</h1>
-            <p class="lede">
-              I build immersive, performant web experiences that elevate brands and move users to act. Each
-              launch blends thoughtful storytelling, accessible design systems, and measurable outcomes.
-            </p>
-            <div class="hero__actions">
-              <a class="button" href="#projects">View case studies</a>
-              <a class="button button--ghost" href="mailto:hello@jenkin.dev">Book a discovery call</a>
-            </div>
-            <div class="hero__meta">
-              <div class="pill">
-                <span class="pill__label">Specialties</span>
-                <strong>Product UX · Web Apps · Creative Dev</strong>
-              </div>
-              <div class="pill">
-                <span class="pill__label">Impact</span>
-                <strong>+35% avg. conversion uplift</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="embed__frame">
+        <p
+          class="codepen"
+          data-height="660"
+          data-default-tab="result"
+          data-slug-hash="pyWLeB"
+          data-user="RobinTreur"
+          data-theme-id="dark"
+        >
+          <span>
+            See the Pen <a href="https://codepen.io/RobinTreur/pen/pyWLeB">Hero concept</a> by Robin Treur (<a
+              href="https://codepen.io/RobinTreur">@RobinTreur</a>) on <a href="https://codepen.io">CodePen</a>.
+          </span>
+        </p>
       </div>
     </header>
 
@@ -42,8 +34,23 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import ProjectCard from './components/ProjectCard.vue'
 import { projects } from './data/projects'
+
+const ensureCodePenScript = () => {
+  const existing = document.querySelector('script[src*="codepen.io/assets/embed/ei.js"]')
+  if (existing) return
+
+  const script = document.createElement('script')
+  script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js'
+  script.async = true
+  document.body.appendChild(script)
+}
+
+onMounted(() => {
+  ensureCodePenScript()
+})
 </script>
 
 <style scoped>
@@ -53,202 +60,44 @@ import { projects } from './data/projects'
     linear-gradient(135deg, #463f3a 0%, #8a817c 55%, #463f3a 100%);
   color: #f4f3ee;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
 }
 
 .page {
   display: grid;
   gap: 32px;
-  padding: 18px;
+  padding: clamp(16px, 3vw, 32px);
   position: relative;
   overflow: hidden;
 }
 
-.hero {
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
+.hero-embed {
+  display: grid;
+  gap: 18px;
   padding: clamp(16px, 3vw, 28px);
+  border-radius: 24px;
   border: 1px solid rgba(244, 243, 238, 0.12);
   background: linear-gradient(120deg, rgba(244, 243, 238, 0.08), rgba(244, 243, 238, 0)),
     linear-gradient(180deg, rgba(188, 184, 177, 0.16), rgba(70, 63, 58, 0.4));
   box-shadow: 0 24px 70px rgba(27, 21, 18, 0.6);
 }
 
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.hero__orb {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  filter: blur(50px);
-  opacity: 0.55;
-  mix-blend-mode: screen;
-  animation: float 16s ease-in-out infinite;
-}
-
-.hero__orb--one {
-  top: -120px;
-  left: -80px;
-  background: radial-gradient(circle, rgba(224, 175, 160, 0.7), transparent 55%);
-}
-
-.hero__orb--two {
-  bottom: -180px;
-  right: -60px;
-  background: radial-gradient(circle, rgba(140, 129, 124, 0.65), transparent 60%);
-  animation-duration: 18s;
-}
-
-.hero__noise {
-  position: absolute;
-  inset: 0;
-  background-image: url('data:image/svg+xml,%3Csvg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n" x="0" y="0" width="100%" height="100%"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.12"/%3E%3C/svg%3E');
-  mix-blend-mode: soft-light;
-  opacity: 0.35;
-}
-
-.hero__content {
-  position: relative;
-  display: grid;
-  gap: 16px;
-  isolation: isolate;
-}
-
-.hero__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(16px, 2vw, 32px);
-  align-items: stretch;
-}
-
-.hero__copy {
-  display: grid;
-  gap: 16px;
-  align-content: start;
-}
-
-.hero__visual {
+.embed__intro {
   display: grid;
   gap: 12px;
-  align-content: start;
+  max-width: 840px;
 }
 
-.hero__parallax {
-  position: relative;
-  height: 100%;
-  min-height: 260px;
+.embed__frame {
   border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, rgba(224, 175, 160, 0.2), transparent 40%),
-    linear-gradient(135deg, rgba(70, 63, 58, 0.8), rgba(70, 63, 58, 0.95));
-  border: 1px solid rgba(244, 243, 238, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.04), 0 18px 40px rgba(27, 21, 18, 0.5);
-}
-
-.hero__layer {
-  position: absolute;
-  inset: 0;
-  transition: transform 0.4s ease;
-}
-
-.hero__layer--accent {
-  background: radial-gradient(circle at 30% 30%, rgba(224, 175, 160, 0.22), transparent 45%),
-    radial-gradient(circle at 70% 60%, rgba(140, 129, 124, 0.2), transparent 45%);
-  animation: drift 18s ease-in-out infinite;
-}
-
-.hero__layer--card {
-  background: linear-gradient(180deg, rgba(70, 63, 58, 0.8), rgba(70, 63, 58, 0.95));
-  padding: 18px;
-  display: grid;
-  gap: 8px;
-  align-content: end;
-  animation: drift 22s ease-in-out infinite reverse;
-}
-
-.hero__status {
-  margin: 0;
-  color: #e0afa0;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-}
-
-.hero__caption {
-  margin: 0;
-  color: rgba(244, 243, 238, 0.86);
-  font-size: 1.05rem;
-}
-
-.hero__marquee {
-  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.24);
   border: 1px solid rgba(244, 243, 238, 0.12);
-  background: rgba(244, 243, 238, 0.06);
-  overflow: hidden;
-  padding: 10px 0;
+  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.05), 0 18px 40px rgba(27, 21, 18, 0.5);
 }
 
-.hero__marquee-track {
-  display: flex;
-  gap: 18px;
-  animation: marquee 16s linear infinite;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(244, 243, 238, 0.84);
-  white-space: nowrap;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(224, 175, 160, 0.7);
-  background: linear-gradient(135deg, #e0afa0, #f4f3ee);
-  color: #463f3a;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 12px 30px rgba(224, 175, 160, 0.35);
-}
-
-.button--ghost {
-  background: rgba(244, 243, 238, 0.08);
-  color: #f4f3ee;
-  box-shadow: none;
-}
-
-.hero__meta {
-  display: grid;
-  gap: 10px;
-}
-
-.pill {
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(244, 243, 238, 0.06);
-  border: 1px solid rgba(244, 243, 238, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.05);
-}
-
-.pill__label {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.8rem;
-  color: #e0afa0;
+.codepen {
+  height: 100%;
 }
 
 .eyebrow {
@@ -275,45 +124,5 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 18px;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-16px);
-  }
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-10px, 12px, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__orb,
-  .hero__marquee-track,
-  .hero__layer,
-  .hero__parallax,
-  .hero__panel {
-    animation: none !important;
-    transition: none !important;
-  }
 }
 </style>
