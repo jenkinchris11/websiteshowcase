@@ -11,9 +11,6 @@
     <section class="div2" aria-label="Codepen recreation">
       <div class="codepen-card">
         <div class="codepen-scene" aria-hidden="true">
-          <div class="glow glow-one"></div>
-          <div class="glow glow-two"></div>
-          <div class="glow glow-three"></div>
           <div class="grid-overlay"></div>
           <div class="particle-field">
             <span class="particle" aria-hidden="true"></span>
