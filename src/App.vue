@@ -11,13 +11,12 @@
     <section class="div3" aria-label="Additional showcase area">
       <div class="cta">
         <div class="cta-media" aria-hidden="true">
-          <dotlottie-player
-            :src="codingAnimation"
-            background="transparent"
-            speed="1"
-            loop
+          <dotlottie-wc
+            src="https://lottie.host/815d100d-c34a-4b42-8c18-a89411eefdf6/ARd4OVLzNc.lottie"
+            style="width: 300px; height: 300px"
             autoplay
-          />
+            loop
+          ></dotlottie-wc>
         </div>
         <div class="cta-copy">
           <h2>More to explore soon</h2>
@@ -32,10 +31,8 @@
 </template>
 
 <script setup>
-import '@dotlottie/player-component'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
-import codingAnimation from './assets/Coding.lottie?url'
 import { projects } from './data/projects'
 </script>
 
@@ -98,14 +95,14 @@ import { projects } from './data/projects'
 }
 
 .cta-media {
-  flex: 0 0 220px;
+  flex: 0 0 300px;
   display: flex;
   justify-content: center;
 }
 
-.cta-media dotlottie-player {
-  width: 220px;
-  height: 220px;
+.cta-media dotlottie-wc {
+  width: 300px;
+  height: 300px;
 }
 
 .cta-copy {
