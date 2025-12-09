@@ -2,8 +2,8 @@
   <section ref="containerRef" class="container" aria-label="Animated hero title">
     <h1>
       <span class="title">{ Jenkin</span>
-      <span class="title">Programming</span>
-      <span class="title">}</span>
+      <span class="title">Programming }</span>
+      <span class="title"></span>
     </h1>
 
     <button class="button" type="button" @click="runAnimation">restart</button>
