@@ -10,19 +10,32 @@
     </section>
     <section class="div3" aria-label="Additional showcase area">
       <div class="cta">
-        <h2>More to explore soon</h2>
-        <p>
-          New experiments, resources, and behind-the-scenes details will appear here as the
-          collection grows.
-        </p>
+        <div class="cta-media" aria-hidden="true">
+          <dotlottie-player
+            :src="codingAnimation"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+          />
+        </div>
+        <div class="cta-copy">
+          <h2>More to explore soon</h2>
+          <p>
+            New experiments, resources, and behind-the-scenes details will appear here as the
+            collection grows.
+          </p>
+        </div>
       </div>
     </section>
   </main>
 </template>
 
 <script setup>
+import '@dotlottie/player-component'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
+import codingAnimation from './assets/Coding.lottie?url'
 import { projects } from './data/projects'
 </script>
 
@@ -67,6 +80,10 @@ import { projects } from './data/projects'
   border-radius: 12px;
   background: rgba(70, 63, 58, 0.4);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .cta h2 {
@@ -78,5 +95,20 @@ import { projects } from './data/projects'
   margin: 0;
   color: rgba(244, 243, 238, 0.85);
   line-height: 1.6;
+}
+
+.cta-media {
+  flex: 0 0 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-media dotlottie-player {
+  width: 220px;
+  height: 220px;
+}
+
+.cta-copy {
+  flex: 1 1 260px;
 }
 </style>
