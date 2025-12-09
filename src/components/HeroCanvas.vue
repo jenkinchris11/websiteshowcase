@@ -109,7 +109,7 @@ onBeforeUnmount(() => {
 h1 {
   color: #fff;
   text-transform: uppercase;
-  font-size: 42px;
+  font-size: 82px;
   margin: 0;
   letter-spacing: 2px;
 }
