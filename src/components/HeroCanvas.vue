@@ -1,9 +1,9 @@
 <template>
   <section ref="containerRef" class="container" aria-label="Animated hero title">
     <h1>
-      <span class="title">This is</span>
-      <span class="title">a long</span>
-      <span class="title">long title</span>
+      <span class="title">{ Jenkin</span>
+      <span class="title">Programming</span>
+      <span class="title">}</span>
     </h1>
 
     <button class="button" type="button" @click="runAnimation">restart</button>
@@ -79,8 +79,6 @@ onBeforeUnmount(() => {
   padding: 32px;
   box-sizing: border-box;
   font-family: 'Fjalla One', sans-serif;
-  background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 }
 
