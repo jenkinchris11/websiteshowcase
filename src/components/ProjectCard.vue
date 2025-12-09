@@ -256,6 +256,13 @@ h3 {
   transform-style: preserve-3d;
 }
 
+.card__media iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
 .card__spotlight {
   position: absolute;
   inset: 0;
