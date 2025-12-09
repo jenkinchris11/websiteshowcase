@@ -102,38 +102,13 @@
                 <p class="section__lede">Interactive preview with full keyboard control.</p>
               </div>
               <div class="overlay__frame" role="presentation">
-                <template v-if="!showFallback">
-                  <iframe
-                    :src="project.url"
-                    title="Live preview"
-                    loading="lazy"
-                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-                    allowfullscreen
-                    @load="handleIframeLoad"
-                    @error="handleIframeError"
-                  ></iframe>
-                </template>
-                <div v-else class="overlay__fallback">
-                  <div class="fallback__media" aria-hidden="true">
-                    <img
-                      v-if="project.heroMedia?.type === 'image'"
-                      :src="project.heroMedia.src"
-                      :alt="project.heroMedia.alt || `${project.title} preview`"
-                    />
-                    <div v-else class="fallback__placeholder">Preview unavailable</div>
-                  </div>
-                  <div class="fallback__copy">
-                    <p class="fallback__message">{{ fallbackMessage }}</p>
-                    <a
-                      class="fallback__button"
-                      :href="project.url"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Open live site ↗
-                    </a>
-                  </div>
-                </div>
+                <iframe
+                  :src="project.url"
+                  title="Live preview"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+                  allowfullscreen
+                ></iframe>
               </div>
             </section>
           </div>
@@ -144,7 +119,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
 const props = defineProps({
   open: {
@@ -162,58 +137,6 @@ const emit = defineEmits(['close'])
 const overlayRef = ref(null)
 const closeButtonRef = ref(null)
 let lastActiveElement = null
-const showFallback = ref(false)
-const embedError = ref('')
-const prefersFallback = ref(false)
-
-const isCrossOrigin = computed(() => {
-  try {
-    const targetOrigin = new URL(props.project.url).origin
-    return targetOrigin !== window.location.origin
-  } catch (error) {
-    return false
-  }
-})
-
-const fallbackMessage = computed(() => {
-  if (embedError.value) return embedError.value
-  if (isCrossOrigin.value) return 'This site restricts embeds, so we are showing a safe preview instead.'
-  if (prefersFallback.value) return 'Preview shown as a static snapshot for a smoother mobile experience.'
-  return 'The live preview is unavailable. Use the button below to open the site.'
-})
-
-const handleIframeError = () => {
-  embedError.value = 'The site blocked embedding (CSP/X-Frame-Options). Showing a snapshot instead.'
-  showFallback.value = true
-}
-
-const handleIframeLoad = (event) => {
-  if (showFallback.value) return
-  const iframe = event?.target
-  if (!iframe) return
-
-  try {
-    const doc = iframe.contentDocument || iframe.contentWindow?.document
-    if (!doc || doc.body?.childElementCount === 0) {
-      embedError.value = 'The preview did not load fully, so a static snapshot is shown instead.'
-      showFallback.value = true
-    }
-  } catch (error) {
-    embedError.value = 'This site prevents embedding due to cross-origin policies. Showing a snapshot instead.'
-    showFallback.value = true
-  }
-}
-
-const evaluatePreferredView = () => {
-  const smallScreen = window.matchMedia('(max-width: 768px)').matches
-  prefersFallback.value = smallScreen || isCrossOrigin.value
-
-  if (prefersFallback.value) {
-    showFallback.value = true
-  } else if (!embedError.value) {
-    showFallback.value = false
-  }
-}
 
 const getFocusableElements = () => {
   if (!overlayRef.value) return []
@@ -262,7 +185,6 @@ watch(
       lastActiveElement = document.activeElement
       document.addEventListener('keydown', handleKeydown)
       document.body.style.overflow = 'hidden'
-      evaluatePreferredView()
       await nextTick()
       closeButtonRef.value?.focus({ preventScroll: true })
     } else {
@@ -275,15 +197,9 @@ watch(
   },
 )
 
-onMounted(() => {
-  evaluatePreferredView()
-  window.addEventListener('resize', evaluatePreferredView)
-})
-
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', handleKeydown)
   document.body.style.overflow = ''
-  window.removeEventListener('resize', evaluatePreferredView)
 })
 </script>
 
@@ -515,66 +431,6 @@ onBeforeUnmount(() => {
   background: #050914;
 }
 
-.overlay__fallback {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  align-items: stretch;
-  gap: 14px;
-  height: 100%;
-}
-
-.fallback__media {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.fallback__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.fallback__placeholder {
-  display: grid;
-  place-items: center;
-  color: rgba(232, 237, 241, 0.72);
-  height: 100%;
-}
-
-.fallback__copy {
-  display: grid;
-  gap: 12px;
-  align-content: center;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-.fallback__message {
-  margin: 0;
-  color: rgba(232, 237, 241, 0.9);
-}
-
-.fallback__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #6cb2ff, #7dd3fc);
-  color: #050914;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 12px 30px rgba(108, 178, 255, 0.3);
-}
-
 .stat {
   padding: 8px 10px;
   border-radius: 10px;
@@ -619,10 +475,6 @@ onBeforeUnmount(() => {
   }
 
   .case-section--columns {
-    grid-template-columns: 1fr;
-  }
-
-  .overlay__fallback {
     grid-template-columns: 1fr;
   }
 }
