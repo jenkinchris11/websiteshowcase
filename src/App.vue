@@ -8,21 +8,28 @@
         <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
       </div>
     </section>
-    <section class="div3" aria-label="Additional showcase area">
-      <div class="cta">
-        <div class="cta-media" aria-hidden="true">
-          <dotlottie-wc
-            src="https://lottie.host/815d100d-c34a-4b42-8c18-a89411eefdf6/ARd4OVLzNc.lottie"
-            style="width: 300px; height: 300px"
-            autoplay
-            loop
-          ></dotlottie-wc>
+    <section class="div3" aria-label="Codepen recreation">
+      <div class="codepen-card">
+        <div class="codepen-scene" aria-hidden="true">
+          <div class="glow glow-one"></div>
+          <div class="glow glow-two"></div>
+          <div class="glow glow-three"></div>
+          <div class="grid-overlay"></div>
+          <div class="particle-field">
+            <span class="particle" aria-hidden="true"></span>
+            <span class="particle" aria-hidden="true"></span>
+            <span class="particle" aria-hidden="true"></span>
+            <span class="particle" aria-hidden="true"></span>
+            <span class="particle" aria-hidden="true"></span>
+            <span class="particle" aria-hidden="true"></span>
+          </div>
         </div>
-        <div class="cta-copy">
-          <h2>More to explore soon</h2>
+        <div class="codepen-copy">
+          <p class="eyebrow">Ma5a / YPzzpep</p>
+          <h2>Neon horizon recreation</h2>
           <p>
-            New experiments, resources, and behind-the-scenes details will appear here as the
-            collection grows.
+            A responsive Vue take on the Codepen scene, featuring layered gradients, animated
+            particles, and a neon grid to mirror the original motion study.
           </p>
         </div>
       </div>
@@ -71,41 +78,188 @@ import { projects } from './data/projects'
   gap: 18px;
 }
 
-.cta {
-  padding: 32px;
-  border: 1px solid rgba(244, 243, 238, 0.24);
-  border-radius: 12px;
-  background: rgba(70, 63, 58, 0.4);
+.codepen-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(244, 243, 238, 0.18);
+  border-radius: 14px;
+  background: radial-gradient(circle at 20% 24%, rgba(255, 210, 170, 0.14), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(173, 213, 255, 0.12), transparent 38%),
+    rgba(16, 12, 22, 0.55);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 1fr;
+  align-items: stretch;
+  min-height: 320px;
 }
 
-.cta h2 {
+.codepen-scene {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 320px;
+  background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(9, 14, 24, 0.85) 0%, rgba(9, 14, 24, 0.4) 65%),
+    linear-gradient(135deg, rgba(255, 132, 88, 0.3), rgba(102, 162, 255, 0.28));
+}
+
+.glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  filter: blur(60px);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  animation: float 16s ease-in-out infinite;
+}
+
+.glow-one {
+  background: radial-gradient(circle, rgba(255, 133, 92, 0.6), transparent 58%);
+  top: -40px;
+  left: -60px;
+  animation-delay: -4s;
+}
+
+.glow-two {
+  background: radial-gradient(circle, rgba(103, 163, 255, 0.65), transparent 60%);
+  bottom: -80px;
+  right: -20px;
+  animation-duration: 18s;
+}
+
+.glow-three {
+  background: radial-gradient(circle, rgba(255, 219, 120, 0.6), transparent 62%);
+  top: 40px;
+  right: 120px;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(40px, -16px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-12px, 20px, 0);
+  }
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.3;
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 1) 100%);
+  transform: perspective(520px) rotateX(66deg) translateY(36px);
+  transform-origin: center top;
+}
+
+.particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+  animation: drift 14s linear infinite;
+}
+
+.particle:nth-child(1) {
+  top: 14%;
+  left: 16%;
+  animation-delay: -2s;
+  animation-duration: 16s;
+}
+
+.particle:nth-child(2) {
+  top: 40%;
+  left: 58%;
+  animation-delay: -6s;
+  animation-duration: 18s;
+}
+
+.particle:nth-child(3) {
+  top: 68%;
+  left: 22%;
+  animation-delay: -10s;
+}
+
+.particle:nth-child(4) {
+  top: 78%;
+  left: 72%;
+  animation-duration: 12s;
+}
+
+.particle:nth-child(5) {
+  top: 16%;
+  left: 80%;
+  animation-duration: 20s;
+  animation-delay: -8s;
+}
+
+.particle:nth-child(6) {
+  top: 32%;
+  left: 32%;
+  animation-duration: 15s;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(14px, -26px, 0) scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(-10px, 30px, 0) scale(1.05);
+    opacity: 1;
+  }
+}
+
+.codepen-copy {
+  padding: 28px 28px 32px;
+  align-self: center;
+}
+
+.eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin: 0 0 10px;
+}
+
+.codepen-copy h2 {
   margin: 0 0 12px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
-.cta p {
+.codepen-copy p {
   margin: 0;
-  color: rgba(244, 243, 238, 0.85);
+  color: rgba(244, 243, 238, 0.86);
   line-height: 1.6;
 }
 
-.cta-media {
-  flex: 0 0 300px;
-  display: flex;
-  justify-content: center;
-}
+@media (max-width: 960px) {
+  .codepen-card {
+    grid-template-columns: 1fr;
+  }
 
-.cta-media dotlottie-wc {
-  width: 300px;
-  height: 300px;
-}
-
-.cta-copy {
-  flex: 1 1 260px;
+  .codepen-copy {
+    padding: 22px;
+  }
 }
 </style>
