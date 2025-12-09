@@ -3,12 +3,12 @@
     <div class="div1">
       <HeroCanvas />
     </div>
-    <section id="projects" class="div2" aria-label="Website projects">
+    <section id="projects" class="div3" aria-label="Website projects">
       <div class="grid">
         <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
       </div>
     </section>
-    <section class="div3" aria-label="Codepen recreation">
+    <section class="div2" aria-label="Codepen recreation">
       <div class="codepen-card">
         <div class="codepen-scene" aria-hidden="true">
           <div class="glow glow-one"></div>
