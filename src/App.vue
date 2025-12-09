@@ -91,9 +91,6 @@ import { projects } from './data/projects'
   overflow: hidden;
   isolation: isolate;
   min-height: 320px;
-  background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.12), transparent 26%),
-    linear-gradient(180deg, rgba(9, 14, 24, 0.85) 0%, rgba(9, 14, 24, 0.4) 65%),
-    linear-gradient(135deg, rgba(255, 132, 88, 0.3), rgba(102, 162, 255, 0.28));
 }
 
 .glow {
