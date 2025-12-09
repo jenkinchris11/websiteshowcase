@@ -39,6 +39,13 @@
     </div>
 
     <div class="card__preview">
+      <iframe
+        :src="project.url"
+        title="Live preview"
+        loading="lazy"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+        allowfullscreen
+      ></iframe>
       <div class="card__media" :style="mediaStyle" role="presentation">
         <div class="card__spotlight" :style="spotlightStyle"></div>
         <div class="card__live">Live demo</div>
