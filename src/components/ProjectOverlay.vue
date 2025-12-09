@@ -426,7 +426,7 @@ onBeforeUnmount(() => {
 
 .overlay__frame iframe {
   width: 100%;
-  height: 100%;
+  height: 500px;
   border: none;
   background: #050914;
 }
