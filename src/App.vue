@@ -40,7 +40,7 @@ import { projects } from './data/projects'
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 30px;
 }
 
 .div1 {
