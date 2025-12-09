@@ -6,7 +6,6 @@
       <span class="title"></span>
     </h1>
 
-    <button class="button" type="button" @click="runAnimation">restart</button>
   </section>
 </template>
 
