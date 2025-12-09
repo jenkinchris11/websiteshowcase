@@ -81,14 +81,7 @@ import { projects } from './data/projects'
 .codepen-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(244, 243, 238, 0.18);
-  border-radius: 14px;
-  background: radial-gradient(circle at 20% 24%, rgba(255, 210, 170, 0.14), transparent 42%),
-    radial-gradient(circle at 88% 10%, rgba(173, 213, 255, 0.12), transparent 38%),
-    rgba(16, 12, 22, 0.55);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) 1fr;
   align-items: stretch;
   min-height: 320px;
 }
