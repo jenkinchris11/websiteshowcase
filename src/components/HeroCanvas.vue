@@ -143,4 +143,9 @@ h1 {
 .title:nth-child(3) {
   color: #BCB8B1;
 }
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+}
 </style>
