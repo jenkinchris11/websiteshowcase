@@ -144,7 +144,7 @@ h1 {
 }
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: 42px;
+    font-size: 32px;
   }
 }
 </style>
