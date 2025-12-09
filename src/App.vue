@@ -19,6 +19,7 @@
             <span class="particle" aria-hidden="true"></span>
             <span class="particle" aria-hidden="true"></span>
             <span class="particle" aria-hidden="true"></span>
+            <div class="particle-message">View my work below</div>
           </div>
         </div>
       </div>
@@ -191,6 +192,21 @@ import { projects } from './data/projects'
   top: 32%;
   left: 32%;
   animation-duration: 15s;
+}
+
+.particle-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 18px 28px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 243, 238, 0.9);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 @keyframes drift {
