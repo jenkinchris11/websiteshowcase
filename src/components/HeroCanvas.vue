@@ -135,14 +135,14 @@ h1 {
 }
 
 .title:nth-child(1) {
-  color: #e55643;
+  color: #BCB8B1;
 }
 
 .title:nth-child(2) {
-  color: #2b9f5e;
+  color: #BCB8B1;
 }
 
 .title:nth-child(3) {
-  color: #f1c83c;
+  color: #BCB8B1;
 }
 </style>
