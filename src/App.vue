@@ -1,8 +1,12 @@
 <template>
-  <main class="page">
-    <HeroCanvas />
-    <section id="projects" class="grid" aria-label="Website projects">
-      <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
+  <main class="parent">
+    <div class="div1">
+      <HeroCanvas />
+    </div>
+    <section id="projects" class="div2" aria-label="Website projects">
+      <div class="grid">
+        <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
+      </div>
     </section>
   </main>
 </template>
@@ -23,21 +27,20 @@ import { projects } from './data/projects'
   min-height: 100vh;
 }
 
-.page {
+.parent {
   display: grid;
-  gap: 32px;
-  padding: clamp(16px, 3vw, 32px);
-  position: relative;
-  overflow: hidden;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
 }
 
-@media (min-width: 960px) {
-  .page {
-    grid-template-columns: minmax(240px, 360px) 1fr;
-    align-items: start;
-    justify-items: stretch;
-  }
+.div1 {
+  grid-area: 1 / 1 / 2 / 4;
+}
+
+.div2 {
+  grid-area: 2 / 1 / 6 / 4;
 }
 
 .grid {
