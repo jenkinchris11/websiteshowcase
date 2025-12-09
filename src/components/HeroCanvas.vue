@@ -71,17 +71,15 @@ onBeforeUnmount(() => {
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
 .container {
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
   display: block;
-  position: absolute;
-  max-width: 225px;
+  max-width: 320px;
+  width: 100%;
   height: 250px;
   margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
   font-family: 'Fjalla One', sans-serif;
   background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
-  padding: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 }
