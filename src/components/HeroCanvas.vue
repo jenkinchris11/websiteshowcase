@@ -72,13 +72,13 @@ onBeforeUnmount(() => {
 
 .container {
   display: block;
-  max-width: 320px;
+  max-width: 700px;
   width: 100%;
-  height: 250px;
+  height: 400px;
   margin: 0 auto;
   padding: 32px;
   box-sizing: border-box;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: Fjalla One, sans-serif;
   border-radius: 12px;
 }
 
@@ -111,7 +111,6 @@ h1 {
   text-transform: uppercase;
   font-size: 42px;
   margin: 0;
-  line-height: 47px;
   letter-spacing: 2px;
 }
 
