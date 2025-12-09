@@ -29,6 +29,7 @@ import { projects } from './data/projects'
   padding: clamp(16px, 3vw, 32px);
   position: relative;
   overflow: hidden;
+  justify-items: stretch;
 }
 
 .grid {
