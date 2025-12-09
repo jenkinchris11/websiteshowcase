@@ -73,7 +73,6 @@ onBeforeUnmount(() => {
   display: block;
   max-width: 700px;
   width: 100%;
-  height: 400px;
   margin: 0 auto;
   padding: 32px;
   box-sizing: border-box;
