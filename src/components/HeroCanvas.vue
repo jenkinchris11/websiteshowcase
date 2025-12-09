@@ -72,10 +72,11 @@ onBeforeUnmount(() => {
 
 .container {
   display: block;
+  max-width: 320px;
   width: 100%;
   height: 250px;
-  margin: 0;
-  padding: clamp(16px, 4vw, 32px);
+  margin: 0 auto;
+  padding: 32px;
   box-sizing: border-box;
   font-family: 'Fjalla One', sans-serif;
   background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);

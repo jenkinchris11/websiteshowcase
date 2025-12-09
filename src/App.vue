@@ -29,7 +29,15 @@ import { projects } from './data/projects'
   padding: clamp(16px, 3vw, 32px);
   position: relative;
   overflow: hidden;
-  justify-items: stretch;
+  justify-items: center;
+}
+
+@media (min-width: 960px) {
+  .page {
+    grid-template-columns: minmax(240px, 360px) 1fr;
+    align-items: start;
+    justify-items: stretch;
+  }
 }
 
 .grid {
