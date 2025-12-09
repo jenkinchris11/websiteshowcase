@@ -216,7 +216,7 @@ onBeforeUnmount(() => {
 .overlay__backdrop {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(124, 155, 255, 0.16), rgba(5, 9, 20, 0.92));
+  background: radial-gradient(circle at 30% 30%, rgba(224, 175, 160, 0.2), rgba(70, 63, 58, 0.9));
   backdrop-filter: blur(12px);
 }
 
@@ -225,9 +225,9 @@ onBeforeUnmount(() => {
   width: min(1200px, 96vw);
   height: min(900px, 90vh);
   border-radius: 18px;
-  background: rgba(10, 14, 24, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  background: rgba(70, 63, 58, 0.92);
+  border: 1px solid rgba(244, 243, 238, 0.14);
+  box-shadow: 0 30px 80px rgba(27, 21, 18, 0.55), inset 0 0 0 1px rgba(244, 243, 238, 0.06);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -239,8 +239,8 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 12px;
   padding: 16px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(244, 243, 238, 0.12);
+  background: rgba(244, 243, 238, 0.04);
   backdrop-filter: blur(10px);
 }
 
@@ -256,27 +256,27 @@ onBeforeUnmount(() => {
 }
 
 .overlay__nav a {
-  color: #dbeafe;
+  color: #f4f3ee;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(244, 243, 238, 0.06);
+  border: 1px solid rgba(244, 243, 238, 0.12);
 }
 
 .overlay__link,
 .overlay__close {
   border-radius: 12px;
   padding: 10px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.08);
-  color: #dbeafe;
+  border: 1px solid rgba(224, 175, 160, 0.6);
+  background: linear-gradient(135deg, rgba(224, 175, 160, 0.14), rgba(244, 243, 238, 0.12));
+  color: #f4f3ee;
   font-weight: 600;
 }
 
 .overlay__link:hover,
 .overlay__close:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(224, 175, 160, 0.2), rgba(244, 243, 238, 0.18));
 }
 
 .overlay__content {
@@ -300,8 +300,8 @@ onBeforeUnmount(() => {
   border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(135deg, rgba(124, 155, 255, 0.25), rgba(88, 210, 255, 0.25));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(224, 175, 160, 0.22), rgba(140, 129, 124, 0.24));
+  border: 1px solid rgba(244, 243, 238, 0.12);
   min-height: 240px;
 }
 
@@ -316,7 +316,7 @@ onBeforeUnmount(() => {
 .case-hero__glass {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 9, 20, 0.15), rgba(5, 9, 20, 0.8));
+  background: linear-gradient(180deg, rgba(70, 63, 58, 0.18), rgba(70, 63, 58, 0.78));
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -324,9 +324,9 @@ onBeforeUnmount(() => {
 .case-hero__copy {
   padding: 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  background: rgba(244, 243, 238, 0.05);
+  border: 1px solid rgba(244, 243, 238, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.04);
   display: grid;
   gap: 10px;
 }
@@ -336,7 +336,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.8rem;
-  color: #9fc1ff;
+  color: #e0afa0;
 }
 
 .case-hero__stats {
@@ -348,9 +348,9 @@ onBeforeUnmount(() => {
 .case-section {
   padding: 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  background: rgba(244, 243, 238, 0.04);
+  border: 1px solid rgba(244, 243, 238, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.04);
 }
 
 .case-section--columns {
@@ -369,12 +369,12 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
-  color: #9fc1ff;
+  color: #e0afa0;
 }
 
 .section__lede {
   margin: 0;
-  color: rgba(232, 237, 241, 0.86);
+  color: rgba(244, 243, 238, 0.86);
 }
 
 .solution__list {
@@ -382,7 +382,7 @@ onBeforeUnmount(() => {
   padding-left: 16px;
   display: grid;
   gap: 8px;
-  color: rgba(232, 237, 241, 0.86);
+  color: rgba(244, 243, 238, 0.86);
 }
 
 .tech {
@@ -396,7 +396,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.8rem;
-  color: #9fc1ff;
+  color: #e0afa0;
 }
 
 .tech__pills {
@@ -408,19 +408,19 @@ onBeforeUnmount(() => {
 .tech__pills span {
   padding: 8px 12px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(244, 243, 238, 0.06);
+  border: 1px solid rgba(244, 243, 238, 0.1);
 }
 
 .case-live {
-  background: linear-gradient(135deg, rgba(124, 155, 255, 0.08), rgba(10, 14, 24, 0.8));
+  background: linear-gradient(135deg, rgba(224, 175, 160, 0.1), rgba(70, 63, 58, 0.86));
 }
 
 .overlay__frame {
-  background: #050914;
+  background: #463f3a;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(244, 243, 238, 0.12);
   min-height: 400px;
 }
 
@@ -428,14 +428,14 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 500px;
   border: none;
-  background: #050914;
+  background: #463f3a;
 }
 
 .stat {
   padding: 8px 10px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(244, 243, 238, 0.07);
+  border: 1px solid rgba(244, 243, 238, 0.12);
 }
 
 .stat__value {
@@ -446,7 +446,7 @@ onBeforeUnmount(() => {
 .stat__label {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(232, 237, 241, 0.78);
+  color: rgba(244, 243, 238, 0.78);
 }
 
 .overlay-fade-enter-active,

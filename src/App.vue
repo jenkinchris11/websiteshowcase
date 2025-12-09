@@ -48,10 +48,10 @@ import { projects } from './data/projects'
 
 <style scoped>
 :global(body) {
-  background: radial-gradient(circle at 15% 20%, rgba(120, 80, 255, 0.12), transparent 35%),
-    radial-gradient(circle at 80% 10%, rgba(0, 185, 255, 0.14), transparent 40%),
-    linear-gradient(135deg, #05080f 0%, #090f1d 55%, #05080f 100%);
-  color: #e8edf1;
+  background: radial-gradient(circle at 18% 20%, rgba(224, 175, 160, 0.22), transparent 34%),
+    radial-gradient(circle at 78% 12%, rgba(188, 184, 177, 0.26), transparent 42%),
+    linear-gradient(135deg, #463f3a 0%, #8a817c 55%, #463f3a 100%);
+  color: #f4f3ee;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -68,10 +68,10 @@ import { projects } from './data/projects'
   overflow: hidden;
   border-radius: 24px;
   padding: clamp(16px, 3vw, 28px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  background: linear-gradient(120deg, rgba(244, 243, 238, 0.08), rgba(244, 243, 238, 0)),
+    linear-gradient(180deg, rgba(188, 184, 177, 0.16), rgba(70, 63, 58, 0.4));
+  box-shadow: 0 24px 70px rgba(27, 21, 18, 0.6);
 }
 
 .hero__bg {
@@ -93,13 +93,13 @@ import { projects } from './data/projects'
 .hero__orb--one {
   top: -120px;
   left: -80px;
-  background: radial-gradient(circle, rgba(125, 96, 255, 0.8), transparent 55%);
+  background: radial-gradient(circle, rgba(224, 175, 160, 0.7), transparent 55%);
 }
 
 .hero__orb--two {
   bottom: -180px;
   right: -60px;
-  background: radial-gradient(circle, rgba(0, 188, 255, 0.8), transparent 60%);
+  background: radial-gradient(circle, rgba(140, 129, 124, 0.65), transparent 60%);
   animation-duration: 18s;
 }
 
@@ -143,10 +143,10 @@ import { projects } from './data/projects'
   min-height: 260px;
   border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 40%),
-    linear-gradient(135deg, rgba(16, 26, 46, 0.8), rgba(10, 14, 24, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 18px 40px rgba(0, 0, 0, 0.35);
+  background: radial-gradient(circle at 20% 20%, rgba(224, 175, 160, 0.2), transparent 40%),
+    linear-gradient(135deg, rgba(70, 63, 58, 0.8), rgba(70, 63, 58, 0.95));
+  border: 1px solid rgba(244, 243, 238, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.04), 0 18px 40px rgba(27, 21, 18, 0.5);
 }
 
 .hero__layer {
@@ -156,13 +156,13 @@ import { projects } from './data/projects'
 }
 
 .hero__layer--accent {
-  background: radial-gradient(circle at 30% 30%, rgba(124, 155, 255, 0.18), transparent 45%),
-    radial-gradient(circle at 70% 60%, rgba(0, 188, 255, 0.18), transparent 45%);
+  background: radial-gradient(circle at 30% 30%, rgba(224, 175, 160, 0.22), transparent 45%),
+    radial-gradient(circle at 70% 60%, rgba(140, 129, 124, 0.2), transparent 45%);
   animation: drift 18s ease-in-out infinite;
 }
 
 .hero__layer--card {
-  background: linear-gradient(180deg, rgba(6, 10, 20, 0.8), rgba(6, 10, 20, 0.95));
+  background: linear-gradient(180deg, rgba(70, 63, 58, 0.8), rgba(70, 63, 58, 0.95));
   padding: 18px;
   display: grid;
   gap: 8px;
@@ -172,7 +172,7 @@ import { projects } from './data/projects'
 
 .hero__status {
   margin: 0;
-  color: #9fc1ff;
+  color: #e0afa0;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -180,14 +180,14 @@ import { projects } from './data/projects'
 
 .hero__caption {
   margin: 0;
-  color: rgba(232, 237, 241, 0.86);
+  color: rgba(244, 243, 238, 0.86);
   font-size: 1.05rem;
 }
 
 .hero__marquee {
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  background: rgba(244, 243, 238, 0.06);
   overflow: hidden;
   padding: 10px 0;
 }
@@ -199,7 +199,7 @@ import { projects } from './data/projects'
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(244, 243, 238, 0.84);
   white-space: nowrap;
 }
 
@@ -216,17 +216,17 @@ import { projects } from './data/projects'
   gap: 8px;
   padding: 12px 18px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(135deg, #7c9bff, #58d2ff);
-  color: #05080f;
+  border: 1px solid rgba(224, 175, 160, 0.7);
+  background: linear-gradient(135deg, #e0afa0, #f4f3ee);
+  color: #463f3a;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(88, 210, 255, 0.25);
+  box-shadow: 0 12px 30px rgba(224, 175, 160, 0.35);
 }
 
 .button--ghost {
-  background: rgba(255, 255, 255, 0.06);
-  color: #e8edf1;
+  background: rgba(244, 243, 238, 0.08);
+  color: #f4f3ee;
   box-shadow: none;
 }
 
@@ -238,9 +238,9 @@ import { projects } from './data/projects'
 .pill {
   padding: 12px 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  background: rgba(244, 243, 238, 0.06);
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(244, 243, 238, 0.05);
 }
 
 .pill__label {
@@ -248,14 +248,14 @@ import { projects } from './data/projects'
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.8rem;
-  color: #9fc1ff;
+  color: #e0afa0;
 }
 
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.9rem;
-  color: #9fc1ff;
+  color: #e0afa0;
   margin: 0;
 }
 
@@ -267,7 +267,7 @@ h1 {
 .lede {
   margin: 0;
   max-width: 720px;
-  color: rgba(232, 237, 241, 0.86);
+  color: rgba(244, 243, 238, 0.88);
   font-size: 1.1rem;
 }
 
