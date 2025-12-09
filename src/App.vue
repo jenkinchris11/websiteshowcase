@@ -21,14 +21,6 @@
             <span class="particle" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="codepen-copy">
-          <p class="eyebrow">Ma5a / YPzzpep</p>
-          <h2>Neon horizon recreation</h2>
-          <p>
-            A responsive Vue take on the Codepen scene, featuring layered gradients, animated
-            particles, and a neon grid to mirror the original motion study.
-          </p>
-        </div>
       </div>
     </section>
   </main>
