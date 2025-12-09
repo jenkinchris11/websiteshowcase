@@ -8,6 +8,15 @@
         <ProjectCard v-for="project in projects" :key="project.url" :project="project" />
       </div>
     </section>
+    <section class="div3" aria-label="Additional showcase area">
+      <div class="cta">
+        <h2>More to explore soon</h2>
+        <p>
+          New experiments, resources, and behind-the-scenes details will appear here as the
+          collection grows.
+        </p>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -30,9 +39,9 @@ import { projects } from './data/projects'
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0;
-  grid-row-gap: 0;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .div1 {
@@ -40,12 +49,35 @@ import { projects } from './data/projects'
 }
 
 .div2 {
-  grid-area: 2 / 1 / 6 / 4;
+  grid-area: 2 / 1 / 3 / 4;
+}
+
+.div3 {
+  grid-area: 3 / 1 / 4 / 4;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 18px;
+}
+
+.cta {
+  padding: 32px;
+  border: 1px solid rgba(244, 243, 238, 0.24);
+  border-radius: 12px;
+  background: rgba(70, 63, 58, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.cta h2 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+}
+
+.cta p {
+  margin: 0;
+  color: rgba(244, 243, 238, 0.85);
+  line-height: 1.6;
 }
 </style>
