@@ -1,6 +1,14 @@
 <template>
-  <main class="parent">
-    <ul class="lightrope">
+  <ul class="lightrope">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
       <li></li>
       <li></li>
       <li></li>
@@ -44,6 +52,7 @@
       <li></li>
       <li></li>
     </ul>
+  <main class="parent">
     <div class="div1">
       <HeroCanvas />
     </div>
