@@ -419,8 +419,6 @@ onBeforeUnmount(() => {
   position: relative;
   height: clamp(320px, 44vw, 460px);
   overflow: hidden;
-  border-radius: 18px;
-  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.35);
   isolation: isolate;
   perspective: 900px;
   --scroll-progress: 0;
