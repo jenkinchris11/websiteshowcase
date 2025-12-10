@@ -24,29 +24,30 @@
         </div>
       </div>
     </section>
-    <section class="div4" aria-label="Layered skyline scene">
-      <div class="skyline" ref="skylineRef" aria-label="Layered city skyline">
-        <div class="layer layer--stars" aria-hidden="true">
-          <span class="star" aria-hidden="true"></span>
-          <span class="star" aria-hidden="true"></span>
-          <span class="star" aria-hidden="true"></span>
-          <span class="star" aria-hidden="true"></span>
-          <span class="star" aria-hidden="true"></span>
+    <section class="div4" aria-label="Layered starfield scene">
+      <div class="skyline" ref="skylineRef" aria-label="Layered starfield">
+        <div class="layer layer--stars-back" aria-hidden="true">
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
         </div>
-        <div class="layer layer--background" aria-hidden="true">
-          <div class="silhouette silhouette--back"></div>
+        <div class="layer layer--nebula" aria-hidden="true">
+          <div class="nebula nebula--one"></div>
+          <div class="nebula nebula--two"></div>
         </div>
-        <div class="layer layer--mid" aria-hidden="true">
-          <div class="silhouette silhouette--mid"></div>
+        <div class="layer layer--stars-mid" aria-hidden="true">
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
         </div>
-        <div class="layer layer--foreground" aria-hidden="true">
-          <div class="street"></div>
-          <div class="lights">
-            <span class="lamp" aria-hidden="true"></span>
-            <span class="lamp" aria-hidden="true"></span>
-            <span class="lamp" aria-hidden="true"></span>
-            <span class="lamp" aria-hidden="true"></span>
-          </div>
+        <div class="layer layer--stars-foreground" aria-hidden="true">
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="shooting-star" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -64,6 +65,11 @@ let observer
 let prefersReducedMotion
 const reduceMotion = ref(false)
 let ticking = false
+const resetMouseTilt = () => {
+  if (!skylineRef.value) return
+  skylineRef.value.style.setProperty('--mouse-tilt-x', '0')
+  skylineRef.value.style.setProperty('--mouse-tilt-y', '0')
+}
 
 const updateProgress = () => {
   if (!skylineRef.value) return
@@ -91,8 +97,23 @@ const handleScroll = () => {
   })
 }
 
+const handlePointerMove = (event) => {
+  if (!skylineRef.value || reduceMotion.value) return
+
+  const rect = skylineRef.value.getBoundingClientRect()
+  const offsetX = (event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
+  const offsetY = (event.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
+
+  const clampedX = Math.max(-1, Math.min(1, offsetX))
+  const clampedY = Math.max(-1, Math.min(1, offsetY))
+
+  skylineRef.value.style.setProperty('--mouse-tilt-x', clampedX.toFixed(4))
+  skylineRef.value.style.setProperty('--mouse-tilt-y', clampedY.toFixed(4))
+}
+
 const handleReduceMotionChange = (event) => {
   reduceMotion.value = event.matches
+  resetMouseTilt()
   updateProgress()
 }
 
@@ -100,6 +121,7 @@ onMounted(() => {
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   reduceMotion.value = prefersReducedMotion.matches
 
+  resetMouseTilt()
   updateProgress()
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('resize', updateProgress, { passive: true })
@@ -111,6 +133,8 @@ onMounted(() => {
 
   if (skylineRef.value) {
     observer.observe(skylineRef.value)
+    skylineRef.value.addEventListener('pointermove', handlePointerMove)
+    skylineRef.value.addEventListener('mouseleave', resetMouseTilt)
   }
 })
 
@@ -120,6 +144,10 @@ onBeforeUnmount(() => {
   prefersReducedMotion?.removeEventListener('change', handleReduceMotionChange)
   if (observer && skylineRef.value) {
     observer.unobserve(skylineRef.value)
+  }
+  if (skylineRef.value) {
+    skylineRef.value.removeEventListener('pointermove', handlePointerMove)
+    skylineRef.value.removeEventListener('mouseleave', resetMouseTilt)
   }
 })
 </script>
@@ -162,13 +190,17 @@ onBeforeUnmount(() => {
 .skyline {
   position: relative;
   height: clamp(320px, 44vw, 460px);
-  background: linear-gradient(180deg, #2b2d42 0%, #1d1f2f 48%, #0f111d 100%);
+  background: radial-gradient(circle at 20% 30%, rgba(75, 100, 180, 0.3), transparent 28%),
+    radial-gradient(circle at 76% 24%, rgba(156, 95, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, #0f1628 0%, #0b0f1b 48%, #05070f 100%);
   overflow: hidden;
   border-radius: 18px;
   box-shadow: 0 22px 38px rgba(0, 0, 0, 0.35);
   isolation: isolate;
   perspective: 900px;
   --scroll-progress: 0;
+  --mouse-tilt-x: 0;
+  --mouse-tilt-y: 0;
 }
 
 .layer {
@@ -178,162 +210,176 @@ onBeforeUnmount(() => {
   transition: transform 0.4s ease-out;
 }
 
-.layer--stars {
-  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
-    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%);
-  transform: translateY(calc(var(--scroll-progress) * -8px)) scale(1.02);
+.layer--stars-back {
+  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.22), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.14), transparent 30%);
+  transform: translateX(calc(var(--mouse-tilt-x) * 8px))
+    translateY(calc(var(--scroll-progress) * -10px + var(--mouse-tilt-y) * -4px)) scale(1.02);
+}
+
+.layer--nebula {
+  filter: blur(12px);
+  opacity: 0.8;
+  transform: translateX(calc(var(--mouse-tilt-x) * 12px))
+    translateY(calc(var(--scroll-progress) * -16px + var(--mouse-tilt-y) * -6px)) scale(1.04);
+}
+
+.nebula {
+  position: absolute;
+  width: 140%;
+  height: 60%;
+  top: 12%;
+  left: -20%;
+  background: radial-gradient(circle at 30% 40%, rgba(91, 164, 255, 0.26), transparent 45%),
+    radial-gradient(circle at 60% 60%, rgba(171, 118, 255, 0.28), transparent 50%);
+}
+
+.nebula--two {
+  top: 32%;
+  left: -10%;
+  transform: scaleX(-1) rotate(4deg);
+  background: radial-gradient(circle at 30% 40%, rgba(118, 218, 255, 0.25), transparent 48%),
+    radial-gradient(circle at 62% 46%, rgba(255, 205, 144, 0.2), transparent 50%);
+}
+
+.layer--stars-mid {
+  transform: translateX(calc(var(--mouse-tilt-x) * 16px))
+    translateY(calc(var(--scroll-progress) * -26px + var(--mouse-tilt-y) * -8px)) scale(1.06);
+}
+
+.layer--stars-foreground {
+  transform: translateX(calc(var(--mouse-tilt-x) * 22px))
+    translateY(calc(var(--scroll-progress) * -40px + var(--mouse-tilt-y) * -12px)) scale(1.08);
 }
 
 .star {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: twinkle 8s ease-in-out infinite;
 }
 
-.star:nth-child(1) {
+.star--tiny {
+  width: 2px;
+  height: 2px;
+  animation-duration: 10s;
+}
+
+.star--small {
+  width: 3px;
+  height: 3px;
+  animation-duration: 9s;
+}
+
+.star--bright {
+  width: 6px;
+  height: 6px;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.8));
+  animation-duration: 7s;
+}
+
+.layer--stars-back .star:nth-child(1) {
   top: 18%;
   left: 22%;
 }
 
-.star:nth-child(2) {
+.layer--stars-back .star:nth-child(2) {
   top: 32%;
   left: 66%;
 }
 
-.star:nth-child(3) {
+.layer--stars-back .star:nth-child(3) {
   top: 42%;
   left: 48%;
 }
 
-.star:nth-child(4) {
+.layer--stars-back .star:nth-child(4) {
   top: 26%;
   left: 82%;
 }
 
-.star:nth-child(5) {
+.layer--stars-back .star:nth-child(5) {
   top: 14%;
   left: 12%;
 }
 
-.silhouette {
+.layer--stars-mid .star:nth-child(1) {
+  top: 48%;
+  left: 18%;
+}
+
+.layer--stars-mid .star:nth-child(2) {
+  top: 58%;
+  left: 64%;
+}
+
+.layer--stars-mid .star:nth-child(3) {
+  top: 36%;
+  left: 74%;
+}
+
+.layer--stars-mid .star:nth-child(4) {
+  top: 62%;
+  left: 36%;
+}
+
+.layer--stars-mid .star:nth-child(5) {
+  top: 46%;
+  left: 52%;
+}
+
+.layer--stars-foreground .star:nth-child(1) {
+  top: 68%;
+  left: 18%;
+}
+
+.layer--stars-foreground .star:nth-child(2) {
+  top: 72%;
+  left: 72%;
+}
+
+.shooting-star {
   position: absolute;
-  inset: auto 6% 18% 6%;
-  background-repeat: repeat-x;
-  background-size: 220px 180px;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  width: 120px;
+  height: 1px;
+  top: 22%;
+  left: 16%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, transparent 100%);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+  transform: rotate(12deg);
+  animation: shoot 12s ease-in-out infinite;
 }
 
-.silhouette::after,
-.silhouette::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-repeat: repeat-x;
-  background-size: inherit;
-  opacity: 0.8;
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translate3d(-80px, 22px, 0) rotate(12deg);
+  }
+  12% {
+    opacity: 1;
+    transform: translate3d(60px, -12px, 0) rotate(12deg);
+  }
+  20% {
+    opacity: 0;
+    transform: translate3d(140px, -24px, 0) rotate(12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-80px, 22px, 0) rotate(12deg);
+  }
 }
 
-.silhouette--back {
-  bottom: 34%;
-  background-image: linear-gradient(180deg, rgba(104, 112, 140, 0.4) 0%, rgba(50, 58, 92, 0.8) 100%);
-  clip-path: polygon(
-    4% 70%,
-    12% 48%,
-    18% 54%,
-    22% 42%,
-    30% 60%,
-    36% 46%,
-    44% 52%,
-    48% 36%,
-    56% 58%,
-    64% 44%,
-    70% 52%,
-    76% 38%,
-    84% 58%,
-    94% 44%,
-    94% 100%,
-    4% 100%
-  );
-}
-
-.silhouette--mid {
-  bottom: 24%;
-  background-image: linear-gradient(180deg, rgba(82, 92, 130, 0.8) 0%, rgba(34, 42, 78, 0.95) 100%);
-  clip-path: polygon(
-    6% 76%,
-    14% 52%,
-    20% 58%,
-    24% 38%,
-    30% 64%,
-    38% 48%,
-    46% 56%,
-    50% 32%,
-    58% 60%,
-    66% 46%,
-    72% 56%,
-    80% 34%,
-    86% 62%,
-    94% 46%,
-    94% 100%,
-    6% 100%
-  );
-}
-
-.layer--background {
-  transform: translateY(calc(var(--scroll-progress) * -18px)) scale(1.02);
-}
-
-.layer--mid {
-  transform: translateY(calc(var(--scroll-progress) * -26px)) scale(1.03);
-}
-
-.layer--foreground {
-  display: flex;
-  align-items: flex-end;
-  transform: translateY(calc(var(--scroll-progress) * -42px)) scale(1.04);
-}
-
-.street {
-  position: absolute;
-  inset: auto -6% 0 -6%;
-  height: 32%;
-  background: linear-gradient(180deg, rgba(18, 20, 36, 0.2) 0%, rgba(6, 8, 18, 0.9) 100%);
-  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
-  box-shadow: inset 0 12px 20px rgba(0, 0, 0, 0.35);
-}
-
-.lights {
-  position: absolute;
-  inset: auto 8% 12% 8%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  justify-items: center;
-}
-
-.lamp {
-  width: 6px;
-  height: 76px;
-  background: linear-gradient(180deg, #1e243b 0%, #090b16 90%);
-  border-radius: 6px;
-  position: relative;
-}
-
-.lamp::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  width: 24px;
-  height: 10px;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at 50% 50%, rgba(255, 211, 148, 0.85), rgba(255, 211, 148, 0.1));
-  border-radius: 18px;
-  filter: drop-shadow(0 0 12px rgba(255, 211, 148, 0.6));
-  opacity: 0.92;
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
