@@ -32,7 +32,6 @@
 <script setup>
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
-import TrexGame from './components/TrexGame.vue'
 import { projects } from './data/projects'
 </script>
 
