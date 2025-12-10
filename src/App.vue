@@ -24,7 +24,31 @@
         </div>
       </div>
     </section>
-    <section class="div4" aria-label="T-Rex runner game">
+    <section class="div4" aria-label="Layered skyline scene">
+      <div class="skyline" ref="skylineRef" aria-label="Layered city skyline">
+        <div class="layer layer--stars" aria-hidden="true">
+          <span class="star" aria-hidden="true"></span>
+          <span class="star" aria-hidden="true"></span>
+          <span class="star" aria-hidden="true"></span>
+          <span class="star" aria-hidden="true"></span>
+          <span class="star" aria-hidden="true"></span>
+        </div>
+        <div class="layer layer--background" aria-hidden="true">
+          <div class="silhouette silhouette--back"></div>
+        </div>
+        <div class="layer layer--mid" aria-hidden="true">
+          <div class="silhouette silhouette--mid"></div>
+        </div>
+        <div class="layer layer--foreground" aria-hidden="true">
+          <div class="street"></div>
+          <div class="lights">
+            <span class="lamp" aria-hidden="true"></span>
+            <span class="lamp" aria-hidden="true"></span>
+            <span class="lamp" aria-hidden="true"></span>
+            <span class="lamp" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 </template>
@@ -33,6 +57,71 @@
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import { projects } from './data/projects'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
+const skylineRef = ref(null)
+let observer
+let prefersReducedMotion
+const reduceMotion = ref(false)
+let ticking = false
+
+const updateProgress = () => {
+  if (!skylineRef.value) return
+
+  if (reduceMotion.value) {
+    skylineRef.value.style.setProperty('--scroll-progress', '0')
+    return
+  }
+
+  const rect = skylineRef.value.getBoundingClientRect()
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight
+  const progress = Math.min(
+    1,
+    Math.max(0, 1 - (rect.top + rect.height * 0.2) / (viewportHeight + rect.height))
+  )
+  skylineRef.value.style.setProperty('--scroll-progress', progress.toFixed(4))
+}
+
+const handleScroll = () => {
+  if (ticking) return
+  ticking = true
+  requestAnimationFrame(() => {
+    updateProgress()
+    ticking = false
+  })
+}
+
+const handleReduceMotionChange = (event) => {
+  reduceMotion.value = event.matches
+  updateProgress()
+}
+
+onMounted(() => {
+  prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  reduceMotion.value = prefersReducedMotion.matches
+
+  updateProgress()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', updateProgress, { passive: true })
+  prefersReducedMotion.addEventListener('change', handleReduceMotionChange)
+
+  observer = new IntersectionObserver(() => updateProgress(), {
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+  })
+
+  if (skylineRef.value) {
+    observer.observe(skylineRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', updateProgress)
+  prefersReducedMotion?.removeEventListener('change', handleReduceMotionChange)
+  if (observer && skylineRef.value) {
+    observer.unobserve(skylineRef.value)
+  }
+})
 </script>
 
 <style scoped>
@@ -68,6 +157,190 @@ import { projects } from './data/projects'
   grid-area: 4 / 1 / 5 / 4;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.skyline {
+  position: relative;
+  height: clamp(320px, 44vw, 460px);
+  background: linear-gradient(180deg, #2b2d42 0%, #1d1f2f 48%, #0f111d 100%);
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.35);
+  isolation: isolate;
+  perspective: 900px;
+  --scroll-progress: 0;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+  transition: transform 0.4s ease-out;
+}
+
+.layer--stars {
+  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%);
+  transform: translateY(calc(var(--scroll-progress) * -8px)) scale(1.02);
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.star:nth-child(1) {
+  top: 18%;
+  left: 22%;
+}
+
+.star:nth-child(2) {
+  top: 32%;
+  left: 66%;
+}
+
+.star:nth-child(3) {
+  top: 42%;
+  left: 48%;
+}
+
+.star:nth-child(4) {
+  top: 26%;
+  left: 82%;
+}
+
+.star:nth-child(5) {
+  top: 14%;
+  left: 12%;
+}
+
+.silhouette {
+  position: absolute;
+  inset: auto 6% 18% 6%;
+  background-repeat: repeat-x;
+  background-size: 220px 180px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.silhouette::after,
+.silhouette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-size: inherit;
+  opacity: 0.8;
+}
+
+.silhouette--back {
+  bottom: 34%;
+  background-image: linear-gradient(180deg, rgba(104, 112, 140, 0.4) 0%, rgba(50, 58, 92, 0.8) 100%);
+  clip-path: polygon(
+    4% 70%,
+    12% 48%,
+    18% 54%,
+    22% 42%,
+    30% 60%,
+    36% 46%,
+    44% 52%,
+    48% 36%,
+    56% 58%,
+    64% 44%,
+    70% 52%,
+    76% 38%,
+    84% 58%,
+    94% 44%,
+    94% 100%,
+    4% 100%
+  );
+}
+
+.silhouette--mid {
+  bottom: 24%;
+  background-image: linear-gradient(180deg, rgba(82, 92, 130, 0.8) 0%, rgba(34, 42, 78, 0.95) 100%);
+  clip-path: polygon(
+    6% 76%,
+    14% 52%,
+    20% 58%,
+    24% 38%,
+    30% 64%,
+    38% 48%,
+    46% 56%,
+    50% 32%,
+    58% 60%,
+    66% 46%,
+    72% 56%,
+    80% 34%,
+    86% 62%,
+    94% 46%,
+    94% 100%,
+    6% 100%
+  );
+}
+
+.layer--background {
+  transform: translateY(calc(var(--scroll-progress) * -18px)) scale(1.02);
+}
+
+.layer--mid {
+  transform: translateY(calc(var(--scroll-progress) * -26px)) scale(1.03);
+}
+
+.layer--foreground {
+  display: flex;
+  align-items: flex-end;
+  transform: translateY(calc(var(--scroll-progress) * -42px)) scale(1.04);
+}
+
+.street {
+  position: absolute;
+  inset: auto -6% 0 -6%;
+  height: 32%;
+  background: linear-gradient(180deg, rgba(18, 20, 36, 0.2) 0%, rgba(6, 8, 18, 0.9) 100%);
+  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+  box-shadow: inset 0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+.lights {
+  position: absolute;
+  inset: auto 8% 12% 8%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  justify-items: center;
+}
+
+.lamp {
+  width: 6px;
+  height: 76px;
+  background: linear-gradient(180deg, #1e243b 0%, #090b16 90%);
+  border-radius: 6px;
+  position: relative;
+}
+
+.lamp::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 24px;
+  height: 10px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 50%, rgba(255, 211, 148, 0.85), rgba(255, 211, 148, 0.1));
+  border-radius: 18px;
+  filter: drop-shadow(0 0 12px rgba(255, 211, 148, 0.6));
+  opacity: 0.92;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    transition: none;
+    transform: none !important;
+  }
 }
 
 .grid {
