@@ -65,27 +65,10 @@ let observer
 let prefersReducedMotion
 const reduceMotion = ref(false)
 let ticking = false
-const tiltFactors = {
-  back: { x: 8, y: -4 },
-  nebula: { x: 12, y: -6 },
-  mid: { x: 16, y: -8 },
-  foreground: { x: 22, y: -12 },
-}
-
-const applyMouseTilt = (x, y) => {
-  if (!skylineRef.value) return
-
-  skylineRef.value.style.setProperty('--mouse-tilt-x', x.toFixed(4))
-  skylineRef.value.style.setProperty('--mouse-tilt-y', y.toFixed(4))
-
-  Object.entries(tiltFactors).forEach(([key, factor]) => {
-    skylineRef.value.style.setProperty(`--tilt-${key}-x`, `${(x * factor.x).toFixed(2)}px`)
-    skylineRef.value.style.setProperty(`--tilt-${key}-y`, `${(y * factor.y).toFixed(2)}px`)
-  })
-}
-
 const resetMouseTilt = () => {
-  applyMouseTilt(0, 0)
+  if (!skylineRef.value) return
+  skylineRef.value.style.setProperty('--mouse-tilt-x', '0')
+  skylineRef.value.style.setProperty('--mouse-tilt-y', '0')
 }
 
 const updateProgress = () => {
@@ -124,7 +107,8 @@ const handlePointerMove = (event) => {
   const clampedX = Math.max(-1, Math.min(1, offsetX))
   const clampedY = Math.max(-1, Math.min(1, offsetY))
 
-  applyMouseTilt(clampedX, clampedY)
+  skylineRef.value.style.setProperty('--mouse-tilt-x', clampedX.toFixed(4))
+  skylineRef.value.style.setProperty('--mouse-tilt-y', clampedY.toFixed(4))
 }
 
 const handleReduceMotionChange = (event) => {
@@ -199,16 +183,11 @@ onBeforeUnmount(() => {
 
 .div4 {
   grid-area: 4 / 1 / 5 / 4;
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 .skyline {
   position: relative;
   height: clamp(320px, 44vw, 460px);
-  background: radial-gradient(circle at 20% 30%, rgba(75, 100, 180, 0.3), transparent 28%),
-    radial-gradient(circle at 76% 24%, rgba(156, 95, 255, 0.18), transparent 30%),
-    linear-gradient(180deg, #0f1628 0%, #0b0f1b 48%, #05070f 100%);
   overflow: hidden;
   border-radius: 18px;
   box-shadow: 0 22px 38px rgba(0, 0, 0, 0.35);
@@ -217,14 +196,6 @@ onBeforeUnmount(() => {
   --scroll-progress: 0;
   --mouse-tilt-x: 0;
   --mouse-tilt-y: 0;
-  --tilt-back-x: 0px;
-  --tilt-back-y: 0px;
-  --tilt-nebula-x: 0px;
-  --tilt-nebula-y: 0px;
-  --tilt-mid-x: 0px;
-  --tilt-mid-y: 0px;
-  --tilt-foreground-x: 0px;
-  --tilt-foreground-y: 0px;
 }
 
 .layer {
@@ -234,46 +205,11 @@ onBeforeUnmount(() => {
   transition: transform 0.4s ease-out;
 }
 
-.layer--stars-back {
-  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.22), transparent 36%),
-    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.14), transparent 30%);
-  transform: translateX(var(--tilt-back-x))
-    translateY(calc(var(--scroll-progress) * -10px + var(--tilt-back-y))) scale(1.02);
-}
-
-.layer--nebula {
-  filter: blur(12px);
-  opacity: 0.8;
-  transform: translateX(var(--tilt-nebula-x))
-    translateY(calc(var(--scroll-progress) * -16px + var(--tilt-nebula-y))) scale(1.04);
-}
-
-.nebula {
-  position: absolute;
-  width: 140%;
-  height: 60%;
-  top: 12%;
-  left: -20%;
-  background: radial-gradient(circle at 30% 40%, rgba(91, 164, 255, 0.26), transparent 45%),
-    radial-gradient(circle at 60% 60%, rgba(171, 118, 255, 0.28), transparent 50%);
-}
-
-.nebula--two {
-  top: 32%;
-  left: -10%;
-  transform: scaleX(-1) rotate(4deg);
-  background: radial-gradient(circle at 30% 40%, rgba(118, 218, 255, 0.25), transparent 48%),
-    radial-gradient(circle at 62% 46%, rgba(255, 205, 144, 0.2), transparent 50%);
-}
-
-.layer--stars-mid {
-  transform: translateX(var(--tilt-mid-x))
-    translateY(calc(var(--scroll-progress) * -26px + var(--tilt-mid-y))) scale(1.06);
-}
-
-.layer--stars-foreground {
-  transform: translateX(var(--tilt-foreground-x))
-    translateY(calc(var(--scroll-progress) * -40px + var(--tilt-foreground-y))) scale(1.08);
+.layer--stars {
+  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%);
+  transform: translateX(calc(var(--mouse-tilt-x) * 10px))
+    translateY(calc(var(--scroll-progress) * -8px + var(--mouse-tilt-y) * -4px)) scale(1.02);
 }
 
 .star {
@@ -338,9 +274,67 @@ onBeforeUnmount(() => {
   left: 64%;
 }
 
-.layer--stars-mid .star:nth-child(3) {
-  top: 36%;
-  left: 74%;
+.silhouette--back {
+  bottom: 34%;
+  background-image: linear-gradient(180deg, rgba(104, 112, 140, 0.4) 0%, rgba(50, 58, 92, 0.8) 100%);
+  clip-path: polygon(
+    4% 70%,
+    12% 48%,
+    18% 54%,
+    22% 42%,
+    30% 60%,
+    36% 46%,
+    44% 52%,
+    48% 36%,
+    56% 58%,
+    64% 44%,
+    70% 52%,
+    76% 38%,
+    84% 58%,
+    94% 44%,
+    94% 100%,
+    4% 100%
+  );
+}
+
+.silhouette--mid {
+  bottom: 24%;
+  background-image: linear-gradient(180deg, rgba(82, 92, 130, 0.8) 0%, rgba(34, 42, 78, 0.95) 100%);
+  clip-path: polygon(
+    6% 76%,
+    14% 52%,
+    20% 58%,
+    24% 38%,
+    30% 64%,
+    38% 48%,
+    46% 56%,
+    50% 32%,
+    58% 60%,
+    66% 46%,
+    72% 56%,
+    80% 34%,
+    86% 62%,
+    94% 46%,
+    94% 100%,
+    6% 100%
+  );
+}
+
+.layer--background {
+  transform: translateX(calc(var(--mouse-tilt-x) * 8px))
+    translateY(calc(var(--scroll-progress) * -18px + var(--mouse-tilt-y) * -6px)) scale(1.02);
+}
+
+.layer--mid {
+  transform: translateX(calc(var(--mouse-tilt-x) * 12px))
+    translateY(calc(var(--scroll-progress) * -26px + var(--mouse-tilt-y) * -8px)) scale(1.03);
+}
+
+.layer--foreground {
+  display: flex;
+  align-items: flex-end;
+  transform: translateX(calc(var(--mouse-tilt-x) * 16px))
+    translateY(calc(var(--scroll-progress) * -42px + var(--mouse-tilt-y) * -10px)) scale(1.04);
 }
 
 .layer--stars-mid .star:nth-child(4) {
