@@ -357,8 +357,8 @@ onBeforeUnmount(() => {
     box-shadow: 0px 4.6666666667px 24px 3px #008556;
   }
   50% {
-    background: rgba(21, 43, 153, 0.4);
-    box-shadow: 0px 4.6666666667px 24px 3px rgba(21, 43, 153, 0.2);
+    background: rgba(0, 133, 86, 0.4);
+    box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 133, 86, 0.2);
   }
 }
 @keyframes flash-2 {
@@ -367,8 +367,8 @@ onBeforeUnmount(() => {
     box-shadow: 0px 4.6666666667px 24px 3px #008556;
   }
   50% {
-    background: rgba(21, 43, 153, 0.4);
-    box-shadow: 0px 4.6666666667px 24px 3px rgba(21, 43, 153, 0.2);
+    background: rgba(0, 133, 86, 0.4);
+    box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 133, 86, 0.2);
   }
 }
 @-webkit-keyframes flash-3 {
