@@ -239,6 +239,7 @@ onBeforeUnmount(() => {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
 }
+
 .globe {
   position: absolute;
   display: flex;
@@ -261,7 +262,7 @@ onBeforeUnmount(() => {
 .base.front {
   width: calc(var(--globe-size) * 0.75);
   height: calc(var(--globe-size) * 0.4);
-  translate: 0 calc(var(--globe-size) * 0.5);  
+  translate: 0 calc(var(--globe-size) * 0.5);
 }
 
 .base.front {
@@ -280,7 +281,7 @@ onBeforeUnmount(() => {
   position: absolute;
   width: calc(var(--globe-size) * 0.68);
   height: 8vh;
-  background: linear-gradient(to right, #000 0%, #FFF6 6%, #FFF1 50%, #000 65%);
+  background: linear-gradient(to right, #000 0%, #fff6 6%, #fff1 50%, #000 65%);
   border-radius: 100% / 50%;
   -webkit-mask: radial-gradient(120% 105% at 50% 35%, #0000 50%, #000 51%);
   mask: radial-gradient(120% 105% at 50% 35%, #0000 50%, #000 51%);
@@ -306,7 +307,7 @@ onBeforeUnmount(() => {
   position: absolute;
   width: calc(var(--globe-size) / 3);
   height: calc(var(--globe-size) / 7);
-  background: linear-gradient(to right, #FFF6, #FFF1);
+  background: linear-gradient(to right, #fff6, #fff1);
   border-radius: 50%;
   rotate: -36deg;
   translate: -11vh 6vh;
@@ -318,7 +319,7 @@ onBeforeUnmount(() => {
   width: calc(var(--globe-size) / 1.175);
   height: calc(var(--globe-size) / 6);
   border-radius: 50%;
-  background: radial-gradient(ellipse at bottom, #FFF, #AAA);
+  background: radial-gradient(ellipse at bottom, #fff, #aaa);
 }
 
 .globe .snow-settled {
@@ -326,7 +327,7 @@ onBeforeUnmount(() => {
   width: var(--globe-inner-size);
   height: var(--globe-inner-size);
   border-radius: 50%;
-  background: #FFF;
+  background: #fff;
   translate: 0 calc(var(--globe-glass-width) / 2);
   clip-path: inset(calc(var(--globe-size) / 1.375) 0 0 0);
   box-shadow: inset 0 0 calc(var(--globe-size) / 5) #000;
@@ -355,7 +356,12 @@ onBeforeUnmount(() => {
 .tree .layer {
   width: var(--width);
   height: var(--height);
-  clip-path: polygon(0 100%, 100% 100%, calc(100% - var(--tilt)) 0, var(--tilt) 0);
+  clip-path: polygon(
+    0 100%,
+    100% 100%,
+    calc(100% - var(--tilt)) 0,
+    var(--tilt) 0
+  );
   background: linear-gradient(to top, #061 50%, #040);
 }
 
@@ -411,18 +417,23 @@ onBeforeUnmount(() => {
   --translate-x: calc(var(--globe-size) / 9.5);
   width: calc(var(--globe-size) / 3);
   transform: skew(30deg);
-  background: radial-gradient(ellipse at bottom, #EEE 30%, #AAA 100%);
+  background: radial-gradient(ellipse at bottom, #eee 30%, #aaa 100%);
 }
 
 .house .roof.left {
   --translate-x: calc(var(--globe-size) / 40 * -0.5);
   width: calc(var(--globe-size) / 4);
   transform: skew(-30deg);
-  background: linear-gradient(to bottom, #000A, #0000),
-    linear-gradient(to right, 
-    #AAA 0%, #AAA 8%, 
-    var(--color-wall-dark) 8%, var(--color-wall-dark) 25%, 
-    var(--color-wall-light) 25%, var(--color-wall-light) 100%);
+  background: linear-gradient(to bottom, #000a, #0000),
+    linear-gradient(
+      to right,
+      #aaa 0%,
+      #aaa 8%,
+      var(--color-wall-dark) 8%,
+      var(--color-wall-dark) 25%,
+      var(--color-wall-light) 25%,
+      var(--color-wall-light) 100%
+    );
 }
 
 .house .roof.top.wall {
@@ -434,8 +445,15 @@ onBeforeUnmount(() => {
 .house .window {
   position: inherit;
   border: calc(var(--globe-size) / 200) solid #99462c;
-  background: linear-gradient(to right, 
-  #f9c76e 0%, #f9c76e 48%, #99462c 48%, #99462c 52%, #f9c76e 52%, #f9c76e 100%);;
+  background: linear-gradient(
+    to right,
+    #f9c76e 0%,
+    #f9c76e 48%,
+    #99462c 48%,
+    #99462c 52%,
+    #f9c76e 52%,
+    #f9c76e 100%
+  );
   width: calc(var(--globe-size) / 12);
   height: calc(var(--globe-size) / 16);
   translate: calc(var(--globe-size) / 3.5) calc(var(--globe-size) / 24);
@@ -444,26 +462,36 @@ onBeforeUnmount(() => {
 .house .door {
   position: inherit;
   border: calc(var(--globe-size) / 200) solid #662c1b;
-  background: linear-gradient(to bottom, 
-  #f9c76e 0%, #f9c76e 22%, #662c1b 22%, #662c1b 26%, #f9c76e 26%, #f9c76e 100%);;
+  background: linear-gradient(
+    to bottom,
+    #f9c76e 0%,
+    #f9c76e 22%,
+    #662c1b 22%,
+    #662c1b 26%,
+    #f9c76e 26%,
+    #f9c76e 100%
+  );
   width: calc(var(--globe-size) / 19);
   height: calc(var(--globe-size) / 10);
   translate: calc(var(--globe-size) / 18) calc(var(--globe-size) / 30);
 }
 
 @keyframes flake-fall {
-  0%, 90% {
+  0%,
+  90% {
     opacity: 1;
   }
-  
-  90%, 100% {
+
+  90%,
+  100% {
     translate: var(--x) calc(var(--globe-size) / 1.4);
   }
-  
+
   100% {
     opacity: 0;
   }
 }
+
   
 .parent {
   display: grid;
