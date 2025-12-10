@@ -47,9 +47,8 @@ import { projects } from './data/projects'
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 10px;
 }
 
 .div1 {
