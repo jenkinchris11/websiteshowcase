@@ -29,36 +29,36 @@
         <div class="shadow"></div>
         <div class="base"></div>
         <div class="bowl">
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
-          <div class="snowflake"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
+          <div class="snowflakee"></div>
           
           <div class="snow"></div>
           <div class="ground"></div>
@@ -275,17 +275,6 @@ onBeforeUnmount(() => {
   --mouse-tilt-x: 0;
   --mouse-tilt-y: 0;
 }
-
-.canvas {
-  --size: 80vmin;
-  width: var(--size);
-  aspect-ratio: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 @keyframes shake {
   0%,
   50%,
@@ -403,7 +392,7 @@ onBeforeUnmount(() => {
   }
 }
 
-.snowflake {
+.snowflakee {
   left: 50%;
   top: -5%;
   width: 2%;
@@ -415,127 +404,127 @@ onBeforeUnmount(() => {
 }
 
 /* this is super ugly, it would be better (or at least cleaner) in SASS */
-.snowflake:nth-child(3n) {
+.snowflakee:nth-child(3n) {
   z-index: 1;
 }
-.snowflake:nth-child(1) {
+.snowflakee:nth-child(1) {
   left: 25%;
   animation-delay: 1s;
 }
-.snowflake:nth-child(2) {
+.snowflakee:nth-child(2) {
   left: 20%;
   animation-delay: 2s;
 }
-.snowflake:nth-child(3) {
+.snowflakee:nth-child(3) {
   left: 30%;
   animation-delay: 3s;
 }
-.snowflake:nth-child(4) {
+.snowflakee:nth-child(4) {
   left: 40%;
   animation-delay: 4s;
 }
-.snowflake:nth-child(5) {
+.snowflakee:nth-child(5) {
   left: 50%;
   animation-delay: 5s;
 }
-.snowflake:nth-child(6) {
+.snowflakee:nth-child(6) {
   left: 60%;
   animation-delay: 1.5s;
 }
-.snowflake:nth-child(7) {
+.snowflakee:nth-child(7) {
   left: 70%;
   animation-delay: 2.5s;
 }
-.snowflake:nth-child(8) {
+.snowflakee:nth-child(8) {
   left: 80%;
   animation-delay: 3.5s;
 }
-.snowflake:nth-child(9) {
+.snowflakee:nth-child(9) {
   left: 75%;
   animation-delay: 4.5s;
 }
-.snowflake:nth-child(11) {
+.snowflakee:nth-child(11) {
   left: 28%;
   animation-delay: 5.5s;
 }
-.snowflake:nth-child(12) {
+.snowflakee:nth-child(12) {
   left: 19%;
   animation-delay: 0.5s;
 }
-.snowflake:nth-child(13) {
+.snowflakee:nth-child(13) {
   left: 38%;
   animation-delay: 1.2s;
 }
-.snowflake:nth-child(14) {
+.snowflakee:nth-child(14) {
   left: 48%;
   animation-delay: 2.2s;
 }
-.snowflake:nth-child(15) {
+.snowflakee:nth-child(15) {
   left: 58%;
   animation-delay: 3.2s;
 }
-.snowflake:nth-child(16) {
+.snowflakee:nth-child(16) {
   left: 68%;
   animation-delay: 4.2s;
 }
-.snowflake:nth-child(17) {
+.snowflakee:nth-child(17) {
   left: 78%;
   animation-delay: 1.7s;
 }
-.snowflake:nth-child(18) {
+.snowflakee:nth-child(18) {
   left: 82%;
   animation-delay: 2.7s;
 }
-.snowflake:nth-child(19) {
+.snowflakee:nth-child(19) {
   left: 65%;
   animation-delay: 3.7s;
 }
-.snowflake:nth-child(20) {
+.snowflakee:nth-child(20) {
   left: 54%;
   animation-delay: 4.7s;
 }
-.snowflake:nth-child(21) {
+.snowflakee:nth-child(21) {
   left: 24%;
   animation-delay: 0.25s;
 }
-.snowflake:nth-child(22) {
+.snowflakee:nth-child(22) {
   left: 24%;
   animation-delay: 0.5s;
 }
-.snowflake:nth-child(23) {
+.snowflakee:nth-child(23) {
   left: 34%;
   animation-delay: 0.75s;
 }
-.snowflake:nth-child(24) {
+.snowflakee:nth-child(24) {
   left: 44%;
   animation-delay: 0.6s;
 }
-.snowflake:nth-child(25) {
+.snowflakee:nth-child(25) {
   left: 54%;
   animation-delay: 2.75s;
 }
-.snowflake:nth-child(26) {
+.snowflakee:nth-child(26) {
   left: 64%;
   animation-delay: 1.75s;
 }
-.snowflake:nth-child(27) {
+.snowflakee:nth-child(27) {
   left: 74%;
   animation-delay: 3.75s;
 }
-.snowflake:nth-child(28) {
+.snowflakee:nth-child(28) {
   left: 84%;
   animation-delay: 1.4s;
 }
-.snowflake:nth-child(29) {
+.snowflakee:nth-child(29) {
   left: 74%;
   animation-delay: 2.4s;
 }
-.snowflake:nth-child(30) {
+.snowflakee:nth-child(30) {
   left: 17%;
   animation-delay: 3.4s;
 }
 
-.canvas:active .snowflake {
+.canvas:active .snowflakee {
   animation: none;
 }
 
