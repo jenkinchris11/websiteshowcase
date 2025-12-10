@@ -280,7 +280,7 @@ onBeforeUnmount(() => {
           animation-duration: 2s;
 }
 .lightrope li:nth-child(2n+1) {
-  background: #152b99;
+  background: #008556;
   box-shadow: 0px 4.6666666667px 24px 3px rgba(21, 43, 153, 0.5);
   -webkit-animation-name: flash-2;
           animation-name: flash-2;
@@ -353,8 +353,8 @@ onBeforeUnmount(() => {
 }
 @-webkit-keyframes flash-2 {
   0%, 100% {
-    background: #152b99;
-    box-shadow: 0px 4.6666666667px 24px 3px #152b99;
+    background: #008556;
+    box-shadow: 0px 4.6666666667px 24px 3px #008556;
   }
   50% {
     background: rgba(21, 43, 153, 0.4);
@@ -363,8 +363,8 @@ onBeforeUnmount(() => {
 }
 @keyframes flash-2 {
   0%, 100% {
-    background: #152b99;
-    box-shadow: 0px 4.6666666667px 24px 3px #152b99;
+    background: #008556;
+    box-shadow: 0px 4.6666666667px 24px 3px #008556;
   }
   50% {
     background: rgba(21, 43, 153, 0.4);
