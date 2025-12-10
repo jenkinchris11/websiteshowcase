@@ -210,46 +210,11 @@ onBeforeUnmount(() => {
   transition: transform 0.4s ease-out;
 }
 
-.layer--stars-back {
-  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.22), transparent 36%),
-    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.14), transparent 30%);
-  transform: translateX(calc(var(--mouse-tilt-x) * 8px))
-    translateY(calc(var(--scroll-progress) * -10px + var(--mouse-tilt-y) * -4px)) scale(1.02);
-}
-
-.layer--nebula {
-  filter: blur(12px);
-  opacity: 0.8;
-  transform: translateX(calc(var(--mouse-tilt-x) * 12px))
-    translateY(calc(var(--scroll-progress) * -16px + var(--mouse-tilt-y) * -6px)) scale(1.04);
-}
-
-.nebula {
-  position: absolute;
-  width: 140%;
-  height: 60%;
-  top: 12%;
-  left: -20%;
-  background: radial-gradient(circle at 30% 40%, rgba(91, 164, 255, 0.26), transparent 45%),
-    radial-gradient(circle at 60% 60%, rgba(171, 118, 255, 0.28), transparent 50%);
-}
-
-.nebula--two {
-  top: 32%;
-  left: -10%;
-  transform: scaleX(-1) rotate(4deg);
-  background: radial-gradient(circle at 30% 40%, rgba(118, 218, 255, 0.25), transparent 48%),
-    radial-gradient(circle at 62% 46%, rgba(255, 205, 144, 0.2), transparent 50%);
-}
-
-.layer--stars-mid {
-  transform: translateX(calc(var(--mouse-tilt-x) * 16px))
-    translateY(calc(var(--scroll-progress) * -26px + var(--mouse-tilt-y) * -8px)) scale(1.06);
-}
-
-.layer--stars-foreground {
-  transform: translateX(calc(var(--mouse-tilt-x) * 22px))
-    translateY(calc(var(--scroll-progress) * -40px + var(--mouse-tilt-y) * -12px)) scale(1.08);
+.layer--stars {
+  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%);
+  transform: translateX(calc(var(--mouse-tilt-x) * 10px))
+    translateY(calc(var(--scroll-progress) * -8px + var(--mouse-tilt-y) * -4px)) scale(1.02);
 }
 
 .star {
@@ -314,9 +279,67 @@ onBeforeUnmount(() => {
   left: 64%;
 }
 
-.layer--stars-mid .star:nth-child(3) {
-  top: 36%;
-  left: 74%;
+.silhouette--back {
+  bottom: 34%;
+  background-image: linear-gradient(180deg, rgba(104, 112, 140, 0.4) 0%, rgba(50, 58, 92, 0.8) 100%);
+  clip-path: polygon(
+    4% 70%,
+    12% 48%,
+    18% 54%,
+    22% 42%,
+    30% 60%,
+    36% 46%,
+    44% 52%,
+    48% 36%,
+    56% 58%,
+    64% 44%,
+    70% 52%,
+    76% 38%,
+    84% 58%,
+    94% 44%,
+    94% 100%,
+    4% 100%
+  );
+}
+
+.silhouette--mid {
+  bottom: 24%;
+  background-image: linear-gradient(180deg, rgba(82, 92, 130, 0.8) 0%, rgba(34, 42, 78, 0.95) 100%);
+  clip-path: polygon(
+    6% 76%,
+    14% 52%,
+    20% 58%,
+    24% 38%,
+    30% 64%,
+    38% 48%,
+    46% 56%,
+    50% 32%,
+    58% 60%,
+    66% 46%,
+    72% 56%,
+    80% 34%,
+    86% 62%,
+    94% 46%,
+    94% 100%,
+    6% 100%
+  );
+}
+
+.layer--background {
+  transform: translateX(calc(var(--mouse-tilt-x) * 8px))
+    translateY(calc(var(--scroll-progress) * -18px + var(--mouse-tilt-y) * -6px)) scale(1.02);
+}
+
+.layer--mid {
+  transform: translateX(calc(var(--mouse-tilt-x) * 12px))
+    translateY(calc(var(--scroll-progress) * -26px + var(--mouse-tilt-y) * -8px)) scale(1.03);
+}
+
+.layer--foreground {
+  display: flex;
+  align-items: flex-end;
+  transform: translateX(calc(var(--mouse-tilt-x) * 16px))
+    translateY(calc(var(--scroll-progress) * -42px + var(--mouse-tilt-y) * -10px)) scale(1.04);
 }
 
 .layer--stars-mid .star:nth-child(4) {
