@@ -25,7 +25,6 @@
       </div>
     </section>
     <section class="div4" aria-label="T-Rex runner game">
-      <TrexGame />
     </section>
   </main>
 </template>
