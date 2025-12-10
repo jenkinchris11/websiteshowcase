@@ -188,9 +188,6 @@ onBeforeUnmount(() => {
 .skyline {
   position: relative;
   height: clamp(320px, 44vw, 460px);
-  background: radial-gradient(circle at 20% 30%, rgba(75, 100, 180, 0.3), transparent 28%),
-    radial-gradient(circle at 76% 24%, rgba(156, 95, 255, 0.18), transparent 30%),
-    linear-gradient(180deg, #0f1628 0%, #0b0f1b 48%, #05070f 100%);
   overflow: hidden;
   border-radius: 18px;
   box-shadow: 0 22px 38px rgba(0, 0, 0, 0.35);
