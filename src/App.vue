@@ -25,6 +25,52 @@
       </div>
     </section>
     <section class="div4" aria-label="Layered starfield scene">
+        <div class="shadow"></div>
+          <div class="base behind"></div>
+          <div class="globe">
+           <div class="snow-settled"></div>
+           <div class="snow-settled-surface"></div>
+           <div class="tree">
+             <div class="layer top"></div>
+             <div class="layer middle"></div>
+             <div class="layer bottom"></div>
+           </div>
+           <div class="house">
+             <div class="wall side">
+                <div class="window"></div>
+             </div>
+             <div class="wall front">
+                <div class="door"></div>
+             </div>
+             <div class="roof left"></div>
+             <div class="roof right"></div>
+            </div>
+            <div class="flake" style="--i: -9"></div>
+            <div class="flake" style="--i: -8"></div>
+            <div class="flake" style="--i: -7"></div>
+            <div class="flake" style="--i: -6"></div>
+            <div class="flake" style="--i: -5"></div>
+            <div class="flake" style="--i: -4"></div>
+            <div class="flake" style="--i: -3"></div>
+            <div class="flake" style="--i: -2"></div>
+            <div class="flake" style="--i: -1"></div>
+            <div class="flake" style="--i: 1"></div>
+            <div class="flake" style="--i: 2"></div>
+            <div class="flake" style="--i: 3"></div>
+            <div class="flake" style="--i: 4"></div>
+            <div class="flake" style="--i: 5"></div>
+            <div class="flake" style="--i: 6"></div>
+            <div class="flake" style="--i: 7"></div>
+            <div class="flake" style="--i: 8"></div>
+            <div class="flake" style="--i: 9"></div>
+            <div class="shine"></div>
+          </div>
+          <div class="base front">
+            <div class="shine"></div>
+          </div>
+          <div class="base bottom">
+            <div class="shine"></div>    
+        </div>
       <div class="skyline" ref="skylineRef" aria-label="Layered starfield">
         <div class="layer layer--stars-back" aria-hidden="true">
           <span class="star star--tiny" aria-hidden="true"></span>
@@ -193,6 +239,232 @@ onBeforeUnmount(() => {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
 }
+.globe {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: var(--globe-size);
+  height: var(--globe-size);
+  border: calc(var(--globe-size) / 100) solid var(--globe-color);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset 0 0 calc(var(--globe-size) / 6) var(--globe-color);
+}
+
+.base {
+  position: absolute;
+  background: var(--color-base);
+  border-radius: 100% / 40%;
+}
+
+.base.behind,
+.base.front {
+  width: calc(var(--globe-size) * 0.75);
+  height: calc(var(--globe-size) * 0.4);
+  translate: 0 calc(var(--globe-size) * 0.5);  
+}
+
+.base.front {
+  mask: radial-gradient(100% 50% at 50% 12%, #0000 50%, #000 51%);
+  -webkit-mask: radial-gradient(100% 50% at 50% 12%, #0000 50%, #000 51%);
+}
+
+.base.bottom {
+  width: calc(var(--globe-size) * 0.85);
+  height: calc(var(--globe-size) * 0.2);
+  translate: 0 calc(var(--globe-size) * 0.6);
+  border-radius: 80% / 50%;
+}
+
+.base .shine {
+  position: absolute;
+  width: calc(var(--globe-size) * 0.68);
+  height: 8vh;
+  background: linear-gradient(to right, #000 0%, #FFF6 6%, #FFF1 50%, #000 65%);
+  border-radius: 100% / 50%;
+  -webkit-mask: radial-gradient(120% 105% at 50% 35%, #0000 50%, #000 51%);
+  mask: radial-gradient(120% 105% at 50% 35%, #0000 50%, #000 51%);
+}
+
+.base.front .shine {
+  translate: 1vh 0.6vh;
+}
+
+.base.bottom .shine {
+  translate: 1vh -2vh;
+}
+
+.shadow {
+  width: calc(var(--globe-size) * 1.8);
+  height: 10vh;
+  background: radial-gradient(farthest-side, #0007, #0000);
+  border-radius: 50%;
+  translate: 5vh calc(var(--globe-size) * 0.65);
+}
+
+.globe .shine {
+  position: absolute;
+  width: calc(var(--globe-size) / 3);
+  height: calc(var(--globe-size) / 7);
+  background: linear-gradient(to right, #FFF6, #FFF1);
+  border-radius: 50%;
+  rotate: -36deg;
+  translate: -11vh 6vh;
+}
+
+.globe .snow-settled-surface {
+  position: absolute;
+  translate: 0 calc(var(--globe-size) / 1.55);
+  width: calc(var(--globe-size) / 1.175);
+  height: calc(var(--globe-size) / 6);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at bottom, #FFF, #AAA);
+}
+
+.globe .snow-settled {
+  position: absolute;
+  width: var(--globe-inner-size);
+  height: var(--globe-inner-size);
+  border-radius: 50%;
+  background: #FFF;
+  translate: 0 calc(var(--globe-glass-width) / 2);
+  clip-path: inset(calc(var(--globe-size) / 1.375) 0 0 0);
+  box-shadow: inset 0 0 calc(var(--globe-size) / 5) #000;
+}
+
+.globe .flake {
+  --abs: max(var(--i), -1 * var(--i));
+  --x: calc(var(--globe-size) / 18 * var(--i));
+  background: white;
+  border-radius: 50%;
+  width: var(--flake-size);
+  height: var(--flake-size);
+  translate: var(--x) calc(var(--flake-size) * -1);
+  animation: flake-fall calc(3s * var(--abs)) infinite ease-in;
+  animation-delay: calc(var(--i) * 2s);
+}
+
+.tree {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  translate: -10vh 16vh;
+}
+
+.tree .layer {
+  width: var(--width);
+  height: var(--height);
+  clip-path: polygon(0 100%, 100% 100%, calc(100% - var(--tilt)) 0, var(--tilt) 0);
+  background: linear-gradient(to top, #061 50%, #040);
+}
+
+.tree .layer.top {
+  --width: 8vh;
+  --tilt: calc(var(--width) / 2);
+  --height: 5vh;
+}
+
+.tree .layer.middle {
+  --width: 12vh;
+  --tilt: 4vh;
+  --height: 6vh;
+}
+
+.tree .layer.bottom {
+  --width: 14vh;
+  --tilt: 3vh;
+  --height: 8vh;
+}
+
+.house {
+  position: absolute;
+  translate: calc(var(--globe-size) / 8 * -1) calc(var(--globe-size) / 2);
+}
+
+.house .wall {
+  position: inherit;
+  height: calc(var(--globe-size) / 7);
+  translate: var(--translate-x) calc(var(--globe-size) / 12);
+}
+
+.house .wall.front {
+  --translate-x: 0;
+  width: calc(var(--globe-size) / 5);
+  background: var(--color-wall-light);
+  overflow: hidden;
+}
+
+.house .wall.side {
+  --translate-x: 0;
+  width: calc(var(--globe-size) / 2.2);
+  background: var(--color-wall-dark);
+}
+
+.house .roof {
+  position: inherit;
+  height: calc(var(--globe-size) / 5.5);
+  translate: var(--translate-x) calc(var(--globe-size) / 12 * -1);
+}
+
+.house .roof.right {
+  --translate-x: calc(var(--globe-size) / 9.5);
+  width: calc(var(--globe-size) / 3);
+  transform: skew(30deg);
+  background: radial-gradient(ellipse at bottom, #EEE 30%, #AAA 100%);
+}
+
+.house .roof.left {
+  --translate-x: calc(var(--globe-size) / 40 * -0.5);
+  width: calc(var(--globe-size) / 4);
+  transform: skew(-30deg);
+  background: linear-gradient(to bottom, #000A, #0000),
+    linear-gradient(to right, 
+    #AAA 0%, #AAA 8%, 
+    var(--color-wall-dark) 8%, var(--color-wall-dark) 25%, 
+    var(--color-wall-light) 25%, var(--color-wall-light) 100%);
+}
+
+.house .roof.top.wall {
+  --translate-x: calc(var(--globe-size) / 20);
+  background: #99462c;
+  width: calc(var(--globe-size) / 4.5);
+}
+
+.house .window {
+  position: inherit;
+  border: calc(var(--globe-size) / 200) solid #99462c;
+  background: linear-gradient(to right, 
+  #f9c76e 0%, #f9c76e 48%, #99462c 48%, #99462c 52%, #f9c76e 52%, #f9c76e 100%);;
+  width: calc(var(--globe-size) / 12);
+  height: calc(var(--globe-size) / 16);
+  translate: calc(var(--globe-size) / 3.5) calc(var(--globe-size) / 24);
+}
+
+.house .door {
+  position: inherit;
+  border: calc(var(--globe-size) / 200) solid #662c1b;
+  background: linear-gradient(to bottom, 
+  #f9c76e 0%, #f9c76e 22%, #662c1b 22%, #662c1b 26%, #f9c76e 26%, #f9c76e 100%);;
+  width: calc(var(--globe-size) / 19);
+  height: calc(var(--globe-size) / 10);
+  translate: calc(var(--globe-size) / 18) calc(var(--globe-size) / 30);
+}
+
+@keyframes flake-fall {
+  0%, 90% {
+    opacity: 1;
+  }
+  
+  90%, 100% {
+    translate: var(--x) calc(var(--globe-size) / 1.4);
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+  
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
