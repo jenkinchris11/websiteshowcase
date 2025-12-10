@@ -183,8 +183,6 @@ onBeforeUnmount(() => {
 
 .div4 {
   grid-area: 4 / 1 / 5 / 4;
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 .skyline {
