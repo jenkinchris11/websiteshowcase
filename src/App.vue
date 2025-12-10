@@ -24,13 +24,16 @@
         </div>
       </div>
     </section>
-    <div class="div4"></div>
+    <section class="div4" aria-label="T-Rex runner game">
+      <TrexGame />
+    </section>
   </main>
 </template>
 
 <script setup>
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
+import TrexGame from './components/TrexGame.vue'
 import { projects } from './data/projects'
 </script>
 
@@ -65,6 +68,8 @@ import { projects } from './data/projects'
 
 .div4 {
   grid-area: 4 / 1 / 5 / 4;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .grid {
