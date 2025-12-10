@@ -1,7 +1,9 @@
 <template>
-  <div class="t-rex-game-container">
-    <div id="runner-container" class="runner-container">
-      <div style="display: none;">
+  <div class="t-rex-game-card">
+    <div class="interstitial-wrapper offline">
+      <div class="runner-container" aria-hidden="true"></div>
+
+      <div class="asset-preload" aria-hidden="true">
         <img id="1x-obstacle-large" :src="sprites['1x-obstacle-large']" alt="" />
         <img id="1x-obstacle-small" :src="sprites['1x-obstacle-small']" alt="" />
         <img id="1x-cloud" :src="sprites['1x-cloud']" alt="" />
@@ -19,13 +21,13 @@
         <img id="2x-trex" :src="sprites['2x-trex']" alt="" />
 
         <template id="audio-resources">
-          <source id="offline-sound-press" src="data:audio/mp3;base64,..." type="audio/mpeg" />
-          <source id="offline-sound-hit" src="data:audio/mp3;base64,..." type="audio/mpeg" />
-          <source id="offline-sound-reached" src="data:audio/mp3;base64,..." type="audio/mpeg" />
+          <source id="offline-sound-press" src="data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAA==" type="audio/mpeg" />
+          <source id="offline-sound-hit" src="data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAA==" type="audio/mpeg" />
+          <source id="offline-sound-reached" src="data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAA==" type="audio/mpeg" />
         </template>
       </div>
     </div>
-    <p>Press <strong>Space</strong> or <strong>Up Arrow</strong> to start the game.</p>
+    <p class="game-hint">Press <strong>Space</strong> or <strong>Up Arrow</strong> to start the game.</p>
   </div>
 </template>
 
@@ -40,12 +42,9 @@ let runnerInstance = null
 
 onMounted(() => {
   if (window.Runner) {
-    runnerInstance = new window.Runner('#runner-container')
-    console.log('T-Rex Runner Game initialized in Vue.')
+    runnerInstance = new window.Runner('.interstitial-wrapper')
   } else {
-    console.error(
-      'T-Rex Runner class not found. Check if trex-game-logic.js is complete and imported correctly.'
-    )
+    console.error('T-Rex Runner class not found. Check if trex-game-logic.js is loaded correctly.')
   }
 })
 
@@ -64,14 +63,20 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.t-rex-game-container {
+.t-rex-game-card {
   padding: 24px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  text-align: center;
   color: #f4f3ee;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.interstitial-wrapper {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 180px;
 }
 
 .runner-container {
@@ -81,9 +86,8 @@ onUnmounted(() => {
   height: 150px;
   transform: translateZ(0);
   border: 1px solid #ccc;
-  margin: 0 auto 12px;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .runner-canvas {
@@ -91,5 +95,34 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.controller {
+  background: rgba(247, 247, 247, 0.1);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.asset-preload {
+  display: none;
+}
+
+.game-hint {
+  margin-top: 12px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .t-rex-game-card {
+    padding: 16px;
+  }
+
+  .runner-container {
+    height: 140px;
+  }
 }
 </style>
