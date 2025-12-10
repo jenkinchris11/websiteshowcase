@@ -24,6 +24,7 @@
         </div>
       </div>
     </section>
+    <div class="div4"></div>
   </main>
 </template>
 
@@ -46,8 +47,9 @@ import { projects } from './data/projects'
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 10px;
+  grid-row-gap: 0px;
 }
 
 .div1 {
@@ -60,6 +62,10 @@ import { projects } from './data/projects'
 
 .div3 {
   grid-area: 3 / 1 / 4 / 4;
+}
+
+.div4 {
+  grid-area: 4 / 1 / 5 / 4;
 }
 
 .grid {
