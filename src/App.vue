@@ -25,6 +25,31 @@
       </div>
     </section>
     <section class="div4" aria-label="Layered starfield scene">
+      <div class="skyline" ref="skylineRef" aria-label="Layered starfield">
+        <div class="layer layer--stars-back" aria-hidden="true">
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+        </div>
+        <div class="layer layer--nebula" aria-hidden="true">
+          <div class="nebula nebula--one"></div>
+          <div class="nebula nebula--two"></div>
+        </div>
+        <div class="layer layer--stars-mid" aria-hidden="true">
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+        </div>
+        <div class="layer layer--stars-foreground" aria-hidden="true">
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="shooting-star" aria-hidden="true"></span>
+        </div>
+      </div>
       <div class="snowflakes" aria-hidden="true">
           <div class="snowflake">
           ❅
