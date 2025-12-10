@@ -64,6 +64,11 @@ let observer
 let prefersReducedMotion
 const reduceMotion = ref(false)
 let ticking = false
+const resetMouseTilt = () => {
+  if (!skylineRef.value) return
+  skylineRef.value.style.setProperty('--mouse-tilt-x', '0')
+  skylineRef.value.style.setProperty('--mouse-tilt-y', '0')
+}
 
 const updateProgress = () => {
   if (!skylineRef.value) return
@@ -91,8 +96,23 @@ const handleScroll = () => {
   })
 }
 
+const handlePointerMove = (event) => {
+  if (!skylineRef.value || reduceMotion.value) return
+
+  const rect = skylineRef.value.getBoundingClientRect()
+  const offsetX = (event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
+  const offsetY = (event.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
+
+  const clampedX = Math.max(-1, Math.min(1, offsetX))
+  const clampedY = Math.max(-1, Math.min(1, offsetY))
+
+  skylineRef.value.style.setProperty('--mouse-tilt-x', clampedX.toFixed(4))
+  skylineRef.value.style.setProperty('--mouse-tilt-y', clampedY.toFixed(4))
+}
+
 const handleReduceMotionChange = (event) => {
   reduceMotion.value = event.matches
+  resetMouseTilt()
   updateProgress()
 }
 
@@ -100,6 +120,7 @@ onMounted(() => {
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   reduceMotion.value = prefersReducedMotion.matches
 
+  resetMouseTilt()
   updateProgress()
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('resize', updateProgress, { passive: true })
@@ -111,6 +132,8 @@ onMounted(() => {
 
   if (skylineRef.value) {
     observer.observe(skylineRef.value)
+    skylineRef.value.addEventListener('pointermove', handlePointerMove)
+    skylineRef.value.addEventListener('mouseleave', resetMouseTilt)
   }
 })
 
@@ -120,6 +143,10 @@ onBeforeUnmount(() => {
   prefersReducedMotion?.removeEventListener('change', handleReduceMotionChange)
   if (observer && skylineRef.value) {
     observer.unobserve(skylineRef.value)
+  }
+  if (skylineRef.value) {
+    skylineRef.value.removeEventListener('pointermove', handlePointerMove)
+    skylineRef.value.removeEventListener('mouseleave', resetMouseTilt)
   }
 })
 </script>
@@ -169,6 +196,8 @@ onBeforeUnmount(() => {
   isolation: isolate;
   perspective: 900px;
   --scroll-progress: 0;
+  --mouse-tilt-x: 0;
+  --mouse-tilt-y: 0;
 }
 
 .layer {
@@ -181,7 +210,8 @@ onBeforeUnmount(() => {
 .layer--stars {
   background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
     radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%);
-  transform: translateY(calc(var(--scroll-progress) * -8px)) scale(1.02);
+  transform: translateX(calc(var(--mouse-tilt-x) * 10px))
+    translateY(calc(var(--scroll-progress) * -8px + var(--mouse-tilt-y) * -4px)) scale(1.02);
 }
 
 .star {
@@ -283,17 +313,20 @@ onBeforeUnmount(() => {
 }
 
 .layer--background {
-  transform: translateY(calc(var(--scroll-progress) * -18px)) scale(1.02);
+  transform: translateX(calc(var(--mouse-tilt-x) * 8px))
+    translateY(calc(var(--scroll-progress) * -18px + var(--mouse-tilt-y) * -6px)) scale(1.02);
 }
 
 .layer--mid {
-  transform: translateY(calc(var(--scroll-progress) * -26px)) scale(1.03);
+  transform: translateX(calc(var(--mouse-tilt-x) * 12px))
+    translateY(calc(var(--scroll-progress) * -26px + var(--mouse-tilt-y) * -8px)) scale(1.03);
 }
 
 .layer--foreground {
   display: flex;
   align-items: flex-end;
-  transform: translateY(calc(var(--scroll-progress) * -42px)) scale(1.04);
+  transform: translateX(calc(var(--mouse-tilt-x) * 16px))
+    translateY(calc(var(--scroll-progress) * -42px + var(--mouse-tilt-y) * -10px)) scale(1.04);
 }
 
 .street {
