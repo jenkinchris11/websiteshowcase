@@ -188,15 +188,8 @@ onBeforeUnmount(() => {
   position: absolute;
   inset: -22px 0 auto;
   height: 120px;
-  background: radial-gradient(120% 80% at 15% 45%, rgba(255, 255, 255, 0.2), transparent 60%),
-    radial-gradient(110% 90% at 45% 35%, rgba(255, 255, 255, 0.28), transparent 62%),
-    radial-gradient(120% 80% at 75% 40%, rgba(255, 255, 255, 0.18), transparent 58%),
-    radial-gradient(110% 80% at 100% 30%, rgba(255, 255, 255, 0.24), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.25) 45%, rgba(255, 255, 255, 0));
   background-repeat: no-repeat;
   pointer-events: none;
-  box-shadow: 0 16px 24px rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   z-index: 1;
 }
 
