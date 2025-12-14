@@ -534,6 +534,11 @@
           <h2>Tell me about your project</h2>
           <p>Use the form below to send a message directly via EmailJS. I’ll reply as soon as I can.</p>
         </div>
+        <div class="contact-reassurance">
+          <p class="contact-reassurance__heading">No obligation enquiry</p>
+          <p>I usually reply within 24–48 hours.</p>
+          <p>Feel free to ask questions or talk through ideas.</p>
+        </div>
         <form class="contact-form" @submit.prevent="handleContactSubmit">
           <label class="field">
             <span>Your name</span>
@@ -1756,6 +1761,23 @@ grid-row-gap: 0px;
   .contact-header p {
     margin: 0;
     color: rgba(244, 243, 238, 0.86);
+  }
+
+  .contact-reassurance {
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(244, 243, 238, 0.08);
+    background: rgba(244, 243, 238, 0.03);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+    display: grid;
+    gap: 6px;
+    color: rgba(244, 243, 238, 0.86);
+  }
+
+  .contact-reassurance__heading {
+    margin: 0;
+    font-weight: 700;
+    color: #f4f3ee;
   }
 
   .contact-form {
