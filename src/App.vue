@@ -230,12 +230,14 @@
         </div>
       </div>
     </section>
+    <ChatWidget />
   </main>
 </template>
 
 <script setup>
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
+import ChatWidget from './components/ChatWidget.vue'
 import { projects } from './data/projects'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
