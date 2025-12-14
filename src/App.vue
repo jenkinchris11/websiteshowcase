@@ -136,13 +136,102 @@
           </div>
       </div>
     </section>
-    <section class="div5" aria-label="Additional showcase">
-      <div class="coming-soon">
-        <h2>More experiments on the way</h2>
-        <p>
-          A new interactive scene will live here soon. Stay tuned as the grid expands to host
-          fresh ideas.
-        </p>
+    <section class="div5" aria-label="Website pricing">
+      <div class="pricing">
+        <h2>Website &amp; Software Services – Affordable Pricing</h2>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <header class="pricing-card__header">
+              <span aria-hidden="true" class="pricing-card__emoji">🌐</span>
+              <div>
+                <h3>Starter Website</h3>
+                <p class="pricing-card__subtitle">Essential Presence</p>
+              </div>
+              <p class="pricing-card__price">£200 – £350</p>
+            </header>
+            <ul>
+              <li>1–3 pages (Home, About, Contact)</li>
+              <li>Mobile-friendly design</li>
+              <li>Contact form</li>
+              <li>Basic SEO setup</li>
+              <li>Fast, modern build</li>
+              <li>Hosting &amp; domain guidance</li>
+            </ul>
+            <p class="pricing-card__note">Best for: tradespeople, sole traders, local services</p>
+            <p class="pricing-card__aside">(This is the “I just need to exist online” package)</p>
+          </article>
+
+          <article class="pricing-card">
+            <header class="pricing-card__header">
+              <span aria-hidden="true" class="pricing-card__emoji">🌐</span>
+              <div>
+                <h3>Small Business Website</h3>
+              </div>
+              <p class="pricing-card__price">£400 – £700</p>
+            </header>
+            <ul>
+              <li>Up to 5 pages</li>
+              <li>Clean, custom layout</li>
+              <li>Mobile &amp; tablet optimised</li>
+              <li>Contact form + map</li>
+              <li>Social links</li>
+              <li>SEO-friendly structure</li>
+            </ul>
+            <p class="pricing-card__note">Best for: small businesses, freelancers, creatives</p>
+          </article>
+
+          <article class="pricing-card">
+            <header class="pricing-card__header">
+              <span aria-hidden="true" class="pricing-card__emoji">🌐</span>
+              <div>
+                <h3>Larger / Custom Website</h3>
+              </div>
+              <p class="pricing-card__price">£800 – £1,500</p>
+            </header>
+            <ul>
+              <li>More pages as needed</li>
+              <li>Custom design &amp; branding</li>
+              <li>Animations or interactive elements</li>
+              <li>Better SEO setup</li>
+              <li>Performance optimisation</li>
+            </ul>
+            <p class="pricing-card__note">Best for: established businesses or growing brands</p>
+          </article>
+
+          <article class="pricing-card">
+            <header class="pricing-card__header">
+              <span aria-hidden="true" class="pricing-card__emoji">🛒</span>
+              <div>
+                <h3>E-Commerce Websites</h3>
+                <p class="pricing-card__subtitle">Small Online Shop</p>
+              </div>
+              <p class="pricing-card__price">£700 – £1,200</p>
+            </header>
+            <ul>
+              <li>Product listings</li>
+              <li>Cart &amp; checkout</li>
+              <li>Secure payments (Stripe / PayPal)</li>
+              <li>Mobile-friendly</li>
+              <li>Basic product management walkthrough</li>
+            </ul>
+          </article>
+
+          <article class="pricing-card">
+            <header class="pricing-card__header">
+              <span aria-hidden="true" class="pricing-card__emoji">🛍</span>
+              <div>
+                <h3>Larger / Custom Shop</h3>
+              </div>
+              <p class="pricing-card__price">£1,500 – £3,000</p>
+            </header>
+            <ul>
+              <li>Larger catalogues</li>
+              <li>Custom checkout logic</li>
+              <li>Stock/order management</li>
+              <li>Scalable setup</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -429,10 +518,10 @@ onBeforeUnmount(() => {
   grid-area: 5 / 1 / 6 / 4;
 }
 
-.coming-soon {
+
+.pricing {
   display: grid;
-  place-items: center;
-  text-align: center;
+  gap: clamp(16px, 3vw, 28px);
   padding: clamp(24px, 6vw, 48px);
   border-radius: 24px;
   background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
@@ -443,15 +532,74 @@ onBeforeUnmount(() => {
   color: #f8f9fb;
 }
 
-.coming-soon h2 {
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
-  margin-bottom: 0.6rem;
+.pricing h2 {
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  margin: 0;
+  text-align: center;
 }
 
-.coming-soon p {
-  max-width: 54ch;
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.pricing-card {
+  background: rgba(13, 19, 33, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: clamp(16px, 2.5vw, 22px);
+  display: grid;
+  gap: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+.pricing-card__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.pricing-card__emoji {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+.pricing-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pricing-card__subtitle {
+  margin: 2px 0 0;
   color: rgba(248, 249, 251, 0.78);
-  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.pricing-card__price {
+  margin: 0;
+  font-weight: 700;
+  color: #dce7ff;
+}
+
+.pricing-card ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  color: rgba(248, 249, 251, 0.92);
+}
+
+.pricing-card__note,
+.pricing-card__aside {
+  margin: 0;
+  color: rgba(248, 249, 251, 0.78);
+}
+
+.pricing-card__aside {
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .skyline {
