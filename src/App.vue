@@ -136,6 +136,15 @@
           </div>
       </div>
     </section>
+    <section class="div5" aria-label="Additional showcase">
+      <div class="coming-soon">
+        <h2>More experiments on the way</h2>
+        <p>
+          A new interactive scene will live here soon. Stay tuned as the grid expands to host
+          fresh ideas.
+        </p>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -395,8 +404,9 @@ onBeforeUnmount(() => {
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 10px;
+  grid-row-gap: 0px;
 }
 
 .div1 {
@@ -413,6 +423,35 @@ onBeforeUnmount(() => {
 
 .div4 {
   grid-area: 4 / 1 / 5 / 4;
+}
+
+.div5 {
+  grid-area: 5 / 1 / 6 / 4;
+}
+
+.coming-soon {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(24px, 6vw, 48px);
+  border-radius: 24px;
+  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%),
+    linear-gradient(135deg, rgba(58, 131, 255, 0.18), rgba(136, 82, 255, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #f8f9fb;
+}
+
+.coming-soon h2 {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  margin-bottom: 0.6rem;
+}
+
+.coming-soon p {
+  max-width: 54ch;
+  color: rgba(248, 249, 251, 0.78);
+  line-height: 1.5;
 }
 
 .skyline {
