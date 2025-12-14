@@ -531,6 +531,10 @@ onBeforeUnmount(() => {
   grid-area: 5 / 1 / 6 / 4;
 }
 
+.div6 {
+  grid-area: 6 / 1 / 7 / 4;
+}
+
 
 .pricing {
   display: grid;
