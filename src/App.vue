@@ -230,6 +230,110 @@
         </div>
       </div>
     </section>
+    <section class="div6" aria-label="Frequently Asked Questions">
+      <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>How much does a website cost?</h3>
+            <p>Prices depend on what you need, but most websites fall between £200 and £1,500.</p>
+            <p>I always agree a clear price before starting — no hidden costs or surprise charges.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>How long does a website take to build?</h3>
+            <p>Most projects take 1–3 weeks, depending on size and how quickly content is supplied.</p>
+            <p>Small websites can often be completed sooner.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do I need to provide the text and images?</h3>
+            <p>Ideally, yes — but I can help if you’re unsure. I’m happy to:</p>
+            <ul>
+              <li>Tidy up your text</li>
+              <li>Help structure pages</li>
+              <li>Advise on images and layout</li>
+            </ul>
+          </article>
+
+          <article class="faq-item">
+            <h3>Will my website work on phones and tablets?</h3>
+            <p>Yes. All websites are mobile-friendly and work across phones, tablets, and desktops as standard.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Can I update the website myself?</h3>
+            <p>Yes, if that’s something you want. I can build the site so you can:</p>
+            <ul>
+              <li>Edit text</li>
+              <li>Change images</li>
+              <li>Add pages</li>
+            </ul>
+            <p>Or I can handle updates for you.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>What happens after the website is finished?</h3>
+            <p>Once the site is complete:</p>
+            <ul>
+              <li>You approve the final version</li>
+              <li>The site is launched</li>
+              <li>I provide support if needed</li>
+            </ul>
+            <p>Ongoing maintenance is optional, not required.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Are there any ongoing costs?</h3>
+            <p>Possibly, but I’ll explain everything upfront.</p>
+            <p>Typical ongoing costs (paid directly to providers):</p>
+            <ul>
+              <li>Domain name</li>
+              <li>Hosting (often low cost)</li>
+              <li>Optional maintenance or SEO</li>
+            </ul>
+            <p>No surprise subscriptions.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you require a deposit?</h3>
+            <p>Yes, usually a small deposit to secure the work, with the remainder due on completion.</p>
+            <p>For larger projects, payment can be split into stages.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Can I pay in instalments?</h3>
+            <p>Yes — especially for larger projects. We can agree a payment plan that works for both sides.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you work with local businesses and trades?</h3>
+            <p>Yes — that’s a big focus. I work with sole traders, tradespeople, creatives, and small businesses, especially those wanting fair, straightforward pricing.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you only build websites?</h3>
+            <p>No. I also build:</p>
+            <ul>
+              <li>Custom web tools</li>
+              <li>Automation &amp; admin systems</li>
+              <li>Software tailored to specific needs</li>
+            </ul>
+            <p>If you’re unsure, just ask.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>What if I don’t know exactly what I need?</h3>
+            <p>That’s very common. You can explain your idea in plain English and I’ll help shape the solution — no technical knowledge required.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>How do I get started?</h3>
+            <p>Just get in touch via the contact page or email. I’ll reply, ask a few questions, and we can go from there — no obligation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
     <ChatWidget />
   </main>
 </template>
@@ -639,6 +743,58 @@ onBeforeUnmount(() => {
   75% {
     transform: translate(-50%, -50%) rotate(-6deg) translate(0, -12%);
   }
+}
+
+.faq {
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
+  padding: clamp(22px, 5vw, 38px);
+  background: linear-gradient(145deg, rgba(13, 19, 33, 0.7), rgba(70, 63, 58, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  color: #f8f9fb;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.faq h2 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.5rem, 2.1vw, 2rem);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(14px, 2vw, 18px);
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: clamp(14px, 2vw, 18px);
+  display: grid;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #dce7ff;
+}
+
+.faq-item p {
+  margin: 0;
+  color: rgba(248, 249, 251, 0.86);
+}
+
+.faq-item ul {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(248, 249, 251, 0.86);
+  display: grid;
+  gap: 4px;
 }
 
 .something {
