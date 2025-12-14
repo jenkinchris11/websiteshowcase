@@ -343,6 +343,13 @@ onBeforeUnmount(() => {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  :global(html),
+  :global(body) {
+    overflow-x: hidden;
+  }
+}
+
 .lightrope {
   text-align: center;
   white-space: nowrap;
