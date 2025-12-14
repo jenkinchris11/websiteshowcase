@@ -367,7 +367,6 @@ onBeforeUnmount(() => {
     right: 0;
     max-width: 100vw;
     overflow-x: hidden;
-    white-space: normal;
   }
 }
 .lightrope li {
