@@ -8,49 +8,49 @@
       <li></li>
       <li></li>
       <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
+      <li class="mobilehide"></li>
     </ul>
   <main class="parent">
     <div class="div1">
@@ -1202,6 +1202,12 @@ onBeforeUnmount(() => {
 
   .codepen-copy {
     padding: 22px;
+  }
+}
+
+  @media (max-width: 960px) {
+  .mobilehide {
+    display: none;
   }
 }
 </style>
