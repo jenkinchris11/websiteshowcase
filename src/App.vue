@@ -452,11 +452,59 @@
         </div>
       </div>
     </section>
+    <section id="contact" class="div9 contact" aria-label="Contact form">
+      <div class="contact-card">
+        <div class="contact-header">
+          <p class="eyebrow">Get in touch</p>
+          <h2>Tell me about your project</h2>
+          <p>Use the form below to send a message directly via EmailJS. I’ll reply as soon as I can.</p>
+        </div>
+        <form class="contact-form" @submit.prevent="handleContactSubmit">
+          <label class="field">
+            <span>Your name</span>
+            <input
+              v-model="contactName"
+              name="from_name"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Email address</span>
+            <input
+              v-model="contactEmail"
+              name="reply_to"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Project details</span>
+            <textarea
+              v-model="contactMessage"
+              name="message"
+              rows="5"
+              required
+              placeholder="What do you need help with?"
+            ></textarea>
+          </label>
+          <button class="submit" type="submit" :disabled="isSending">
+            <span v-if="isSending">Sending…</span>
+            <span v-else>Send message</span>
+          </button>
+          <p v-if="formStatus === 'error'" class="status status--error">{{ formMessage }}</p>
+          <p v-else-if="formStatus === 'success'" class="status status--success">{{ formMessage }}</p>
+        </form>
+      </div>
+    </section>
     <ChatWidget />
   </main>
 </template>
 
 <script setup>
+import emailjs from '@emailjs/browser'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import ChatWidget from './components/ChatWidget.vue'
@@ -468,10 +516,59 @@ let observer
 let prefersReducedMotion
 const reduceMotion = ref(false)
 let ticking = false
+const contactName = ref('')
+const contactEmail = ref('')
+const contactMessage = ref('')
+const formStatus = ref('idle')
+const formMessage = ref('')
+const isSending = ref(false)
+
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 const resetMouseTilt = () => {
   if (!skylineRef.value) return
   skylineRef.value.style.setProperty('--mouse-tilt-x', '0')
   skylineRef.value.style.setProperty('--mouse-tilt-y', '0')
+}
+
+const handleContactSubmit = async () => {
+  if (!serviceId || !templateId || !publicKey) {
+    formStatus.value = 'error'
+    formMessage.value = 'EmailJS environment variables are missing. Please add your service, template, and public keys.'
+    return
+  }
+
+  isSending.value = true
+  formStatus.value = 'idle'
+  formMessage.value = ''
+
+  try {
+    await emailjs.send(
+      serviceId,
+      templateId,
+      {
+        from_name: contactName.value,
+        reply_to: contactEmail.value,
+        message: contactMessage.value,
+      },
+      {
+        publicKey,
+      }
+    )
+
+    contactName.value = ''
+    contactEmail.value = ''
+    contactMessage.value = ''
+    formStatus.value = 'success'
+    formMessage.value = 'Thank you! Your message has been sent.'
+  } catch (error) {
+    console.error('EmailJS error', error)
+    formStatus.value = 'error'
+    formMessage.value = 'Something went wrong while sending. Please try again or email me directly.'
+  } finally {
+    isSending.value = false
+  }
 }
 
 const updateProgress = () => {
@@ -1483,18 +1580,119 @@ grid-row-gap: 0px;
   line-height: 1.6;
 }
 
-@media (max-width: 960px) {
-  .codepen-card {
-    grid-template-columns: 1fr;
+  @media (max-width: 960px) {
+    .codepen-card {
+      grid-template-columns: 1fr;
+    }
+
+    .codepen-copy {
+      padding: 22px;
+    }
+  }
+  .contact {
+    display: grid;
+    place-items: center;
+    padding: clamp(24px, 6vw, 56px);
   }
 
-  .codepen-copy {
-    padding: 22px;
+  .contact-card {
+    width: min(980px, 100%);
+    display: grid;
+    gap: clamp(20px, 3vw, 28px);
+    padding: clamp(24px, 6vw, 48px);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(244, 243, 238, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
   }
-}
-@media (max-width: 768px) { 
-  .mobilehide {
-    display: none;
+
+  .contact-header h2 {
+    margin: 6px 0 10px;
+  }
+
+  .contact-header p {
+    margin: 0;
+    color: rgba(244, 243, 238, 0.86);
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 16px;
+  }
+
+  .field {
+    display: grid;
+    gap: 8px;
+    font-weight: 600;
+    color: rgba(244, 243, 238, 0.9);
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 243, 238, 0.16);
+    background: rgba(20, 24, 33, 0.75);
+    color: #f4f3ee;
+    padding: 12px 14px;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: rgba(238, 192, 139, 0.8);
+    box-shadow: 0 10px 30px rgba(238, 192, 139, 0.12);
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .submit {
+    justify-self: start;
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(120deg, #463f3a, #8a817c);
+    color: #f4f3ee;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .status {
+    margin: 4px 0 0;
+    font-weight: 600;
+  }
+
+  .status--success {
+    color: #b3f7cf;
+  }
+
+  .status--error {
+    color: #ffc9c9;
+  }
+
+  .contact .eyebrow {
+    color: rgba(244, 243, 238, 0.6);
+  }
+  @media (max-width: 768px) {
+    .mobilehide {
+      display: none;
   }
 }
 </style>
