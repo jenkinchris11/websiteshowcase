@@ -195,6 +195,65 @@
           </div>
       </div>
     </section>
+        <section class="div8" aria-label="Layered starfield scene">
+      <div class="skyline" ref="skylineRef" aria-label="Layered starfield">
+        <div class="layer layer--stars-back" aria-hidden="true">
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+          <span class="star star--tiny" aria-hidden="true"></span>
+        </div>
+        <div class="layer layer--nebula" aria-hidden="true">
+          <div class="nebula nebula--one"></div>
+          <div class="nebula nebula--two"></div>
+        </div>
+        <div class="layer layer--stars-mid" aria-hidden="true">
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+          <span class="star star--small" aria-hidden="true"></span>
+        </div>
+        <div class="layer layer--stars-foreground" aria-hidden="true">
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="star star--bright" aria-hidden="true"></span>
+          <span class="shooting-star" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="snowflakes" aria-hidden="true">
+          <div class="snowflake">
+          ❅
+          </div>
+          <div class="snowflake">
+          ❅
+          </div>
+          <div class="snowflake">
+          ❆
+          </div>
+          <div class="snowflake">
+          ❄
+          </div>
+          <div class="snowflake">
+          ❅
+          </div>
+          <div class="snowflake">
+          ❆
+          </div>
+          <div class="snowflake">
+          ❄
+          </div>
+          <div class="snowflake">
+          ❅
+          </div>
+          <div class="snowflake">
+          ❆
+          </div>
+          <div class="snowflake">
+          ❄
+          </div>
+      </div>
+    </section>
     <section class="div5" aria-label="Website pricing">
       <div class="pricing">
         <h2>Website &amp; Software Services – Affordable Pricing</h2>
@@ -674,8 +733,6 @@ grid-column-gap: 0px;
 grid-row-gap: 0px;
 }
 
-
-
 .div1 {
   grid-area: 1 / 1 / 2 / 4;
 }
@@ -704,6 +761,14 @@ grid-row-gap: 0px;
   grid-area: 7 / 1 / 8 / 4; 
 }
   
+.div8 { 
+  grid-area: 8 / 1 / 9 / 4;
+}
+  
+.div9 { 
+  grid-area: 9 / 1 / 10 / 4;
+}  
+
 .pricing {
   display: grid;
   gap: clamp(16px, 3vw, 28px);
