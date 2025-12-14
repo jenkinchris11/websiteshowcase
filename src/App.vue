@@ -1204,8 +1204,7 @@ onBeforeUnmount(() => {
     padding: 22px;
   }
 }
-
-  @media (max-width: 960px) {
+@media (max-width: 768px) { 
   .mobilehide {
     display: none;
   }
