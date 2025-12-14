@@ -89,7 +89,7 @@ const handlePrompt = (option) => {
 }
 
 .chat-toggle {
-  background: linear-gradient(135deg, #f4f3ee, #e4d9ff);
+  background: #89827C;
   color: #241f31;
   border: none;
   width: 3.25rem;
@@ -114,7 +114,7 @@ const handlePrompt = (option) => {
 
 .chat-panel {
   width: min(320px, 88vw);
-  background: rgba(18, 18, 24, 0.92);
+  background: #89827C;
   color: #f7f6f3;
   border-radius: 16px;
   padding: 1rem;
