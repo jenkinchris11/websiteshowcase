@@ -523,10 +523,8 @@ onBeforeUnmount(() => {
   gap: clamp(16px, 3vw, 28px);
   padding: clamp(24px, 6vw, 48px);
   border-radius: 24px;
-  background: radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.35), transparent 36%),
-    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.2), transparent 30%),
-    linear-gradient(135deg, rgba(58, 131, 255, 0.18), rgba(136, 82, 255, 0.18));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(circle at 10% 20%, rgba(224, 175, 160, .1), transparent 35%), radial-gradient(circle at 80% 0%, rgba(188, 184, 177, .12), transparent 25%), #463f3ad1;
+  border: 1px solid rgba(244, 243, 238, .1);
   backdrop-filter: blur(8px);
   color: #f8f9fb;
 }
