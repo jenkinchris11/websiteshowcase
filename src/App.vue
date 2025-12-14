@@ -579,6 +579,17 @@
         </form>
       </div>
     </section>
+    <section class="div10 about" aria-label="About me">
+      <div class="about-card">
+        <h2>About</h2>
+        <p>
+          I'm a solo web developer building websites for small businesses, creatives, and sole traders. You work
+          directly with me—no agency overheads or hand-offs—so decisions stay simple and progress stays quick. I value
+          clear communication, fair pricing, and reliable, modern builds tailored to how you work. If you want a
+          partner who listens, keeps you informed, and delivers on time, that's what I do.
+        </p>
+      </div>
+    </section>
     <ChatWidget />
   </main>
 </template>
@@ -942,9 +953,13 @@ grid-row-gap: 0px;
   grid-area: 8 / 1 / 9 / 4;
 }
   
-.div9 { 
+.div9 {
   grid-area: 9 / 1 / 10 / 4;
-}  
+}
+
+.div10 {
+  grid-area: 10 / 1 / 11 / 4;
+}
 
 .pricing {
   display: grid;
@@ -1741,6 +1756,33 @@ grid-row-gap: 0px;
     display: grid;
     place-items: center;
     padding: clamp(24px, 6vw, 56px);
+  }
+
+  .about {
+    display: grid;
+    place-items: center;
+    padding: clamp(24px, 6vw, 56px);
+  }
+
+  .about-card {
+    width: min(860px, 100%);
+    display: grid;
+    gap: 12px;
+    padding: clamp(24px, 6vw, 40px);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(244, 243, 238, 0.08);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+  }
+
+  .about h2 {
+    margin: 0;
+  }
+
+  .about p {
+    margin: 0;
+    color: rgba(244, 243, 238, 0.86);
+    line-height: 1.6;
   }
 
   .contact-card {
