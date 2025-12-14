@@ -352,103 +352,178 @@
       <div class="faq">
         <h2>Frequently Asked Questions</h2>
         <div class="faq-grid">
-          <article class="faq-item">
-            <h3>How much does a website cost?</h3>
-            <p>Prices depend on what you need, but most websites fall between £200 and £1,500.</p>
-            <p>I always agree a clear price before starting — no hidden costs or surprise charges.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>How much does a website cost?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Prices depend on what you need, but most websites fall between £200 and £1,500.</p>
+              <p>I always agree a clear price before starting — no hidden costs or surprise charges.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>How long does a website take to build?</h3>
-            <p>Most projects take 1–3 weeks, depending on size and how quickly content is supplied.</p>
-            <p>Small websites can often be completed sooner.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>How long does a website take to build?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Most projects take 1–3 weeks, depending on size and how quickly content is supplied.</p>
+              <p>Small websites can often be completed sooner.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Do I need to provide the text and images?</h3>
-            <p>Ideally, yes — but I can help if you’re unsure. I’m happy to:</p>
-            <ul>
-              <li>Tidy up your text</li>
-              <li>Help structure pages</li>
-              <li>Advise on images and layout</li>
-            </ul>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Do I need to provide the text and images?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Ideally, yes — but I can help if you’re unsure. I’m happy to:</p>
+              <ul>
+                <li>Tidy up your text</li>
+                <li>Help structure pages</li>
+                <li>Advise on images and layout</li>
+              </ul>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Will my website work on phones and tablets?</h3>
-            <p>Yes. All websites are mobile-friendly and work across phones, tablets, and desktops as standard.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Will my website work on phones and tablets?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes. All websites are mobile-friendly and work across phones, tablets, and desktops as standard.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Can I update the website myself?</h3>
-            <p>Yes, if that’s something you want. I can build the site so you can:</p>
-            <ul>
-              <li>Edit text</li>
-              <li>Change images</li>
-              <li>Add pages</li>
-            </ul>
-            <p>Or I can handle updates for you.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Can I update the website myself?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes, if that’s something you want. I can build the site so you can:</p>
+              <ul>
+                <li>Edit text</li>
+                <li>Change images</li>
+                <li>Add pages</li>
+              </ul>
+              <p>Or I can handle updates for you.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>What happens after the website is finished?</h3>
-            <p>Once the site is complete:</p>
-            <ul>
-              <li>You approve the final version</li>
-              <li>The site is launched</li>
-              <li>I provide support if needed</li>
-            </ul>
-            <p>Ongoing maintenance is optional, not required.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>What happens after the website is finished?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Once the site is complete:</p>
+              <ul>
+                <li>You approve the final version</li>
+                <li>The site is launched</li>
+                <li>I provide support if needed</li>
+              </ul>
+              <p>Ongoing maintenance is optional, not required.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Are there any ongoing costs?</h3>
-            <p>Possibly, but I’ll explain everything upfront.</p>
-            <p>Typical ongoing costs (paid directly to providers):</p>
-            <ul>
-              <li>Domain name</li>
-              <li>Hosting (often low cost)</li>
-              <li>Optional maintenance or SEO</li>
-            </ul>
-            <p>No surprise subscriptions.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Who will I be dealing with?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>You’ll deal directly with me from start to finish — no hand-offs or middlemen.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Do you require a deposit?</h3>
-            <p>Yes, usually a small deposit to secure the work, with the remainder due on completion.</p>
-            <p>For larger projects, payment can be split into stages.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Are there any ongoing costs?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Possibly, but I’ll explain everything upfront.</p>
+              <p>Typical ongoing costs (paid directly to providers):</p>
+              <ul>
+                <li>Domain name</li>
+                <li>Hosting (often low cost)</li>
+                <li>Optional maintenance or SEO</li>
+              </ul>
+              <p>No surprise subscriptions.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Can I pay in instalments?</h3>
-            <p>Yes — especially for larger projects. We can agree a payment plan that works for both sides.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Do you require a deposit?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes, usually a small deposit to secure the work, with the remainder due on completion.</p>
+              <p>For larger projects, payment can be split into stages.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Do you work with local businesses and trades?</h3>
-            <p>Yes — that’s a big focus. I work with sole traders, tradespeople, creatives, and small businesses, especially those wanting fair, straightforward pricing.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Can I pay in instalments?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes — especially for larger projects. We can agree a payment plan that works for both sides.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>Do you only build websites?</h3>
-            <p>No. I also build:</p>
-            <ul>
-              <li>Custom web tools</li>
-              <li>Automation &amp; admin systems</li>
-              <li>Software tailored to specific needs</li>
-            </ul>
-            <p>If you’re unsure, just ask.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Do you work with local businesses and trades?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes — that’s a big focus. I work with sole traders, tradespeople, creatives, and small businesses, especially those wanting fair, straightforward pricing.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>What if I don’t know exactly what I need?</h3>
-            <p>That’s very common. You can explain your idea in plain English and I’ll help shape the solution — no technical knowledge required.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>Do you only build websites?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>No. I also build:</p>
+              <ul>
+                <li>Custom web tools</li>
+                <li>Automation &amp; admin systems</li>
+                <li>Software tailored to specific needs</li>
+              </ul>
+              <p>If you’re unsure, just ask.</p>
+            </div>
+          </details>
 
-          <article class="faq-item">
-            <h3>How do I get started?</h3>
-            <p>Just get in touch via the contact page or email. I’ll reply, ask a few questions, and we can go from there — no obligation.</p>
-          </article>
+          <details class="faq-item">
+            <summary>
+              <h3>What if I don’t know exactly what I need?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>That’s very common. You can explain your idea in plain English and I’ll help shape the solution — no technical knowledge required.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <h3>How do I get started?</h3>
+              <span aria-hidden="true" class="faq-toggle" role="presentation"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Just get in touch via the contact page or email. I’ll reply, ask a few questions, and we can go from there — no obligation.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -1000,8 +1075,34 @@ grid-row-gap: 0px;
   border-radius: 14px;
   padding: clamp(14px, 2vw, 18px);
   display: grid;
-  gap: 8px;
+  gap: 10px;
   line-height: 1.6;
+  position: relative;
+}
+
+.faq-item[open] {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid #9ecbff;
+  outline-offset: 4px;
+  border-radius: 10px;
 }
 
 .faq-item h3 {
@@ -1021,6 +1122,48 @@ grid-row-gap: 0px;
   color: rgba(248, 249, 251, 0.86);
   display: grid;
   gap: 4px;
+}
+
+.faq-content {
+  display: grid;
+  gap: 8px;
+}
+
+.faq-toggle {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.faq-toggle::before,
+.faq-toggle::after {
+  content: '';
+  position: absolute;
+  background: #dce7ff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-toggle::before {
+  width: 10px;
+  height: 2px;
+}
+
+.faq-toggle::after {
+  width: 2px;
+  height: 10px;
+}
+
+.faq-item[open] .faq-toggle {
+  transform: rotate(45deg);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .something {
