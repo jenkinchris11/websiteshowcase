@@ -157,8 +157,6 @@
               <li>Fast, modern build</li>
               <li>Hosting &amp; domain guidance</li>
             </ul>
-            <p class="pricing-card__note">Best for: tradespeople, sole traders, local services</p>
-            <p class="pricing-card__aside">(This is the “I just need to exist online” package)</p>
           </article>
 
           <article class="pricing-card">
@@ -177,7 +175,6 @@
               <li>Social links</li>
               <li>SEO-friendly structure</li>
             </ul>
-            <p class="pricing-card__note">Best for: small businesses, freelancers, creatives</p>
           </article>
 
           <article class="pricing-card">
@@ -195,7 +192,6 @@
               <li>Better SEO setup</li>
               <li>Performance optimisation</li>
             </ul>
-            <p class="pricing-card__note">Best for: established businesses or growing brands</p>
           </article>
 
           <article class="pricing-card">
