@@ -1791,7 +1791,7 @@ grid-row-gap: 0px;
     gap: clamp(20px, 3vw, 28px);
     padding: clamp(24px, 6vw, 48px);
     border-radius: 24px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    background: radial-gradient(circle at 10% 20%,rgba(224,175,160,.1),transparent 35%),radial-gradient(circle at 80% 0%,rgba(188,184,177,.12),transparent 25%),#463f3ad1;
     border: 1px solid rgba(244, 243, 238, 0.08);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
   }
