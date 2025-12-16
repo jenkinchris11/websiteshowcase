@@ -1778,7 +1778,6 @@ grid-row-gap: 0px;
   .about-card {
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(240px, 300px) 1fr;
     align-items: center;
     gap: clamp(16px, 3vw, 28px);
     padding: clamp(24px, 6vw, 40px);
