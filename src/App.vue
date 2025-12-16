@@ -1776,7 +1776,7 @@ grid-row-gap: 0px;
   }
 
   .about-card {
-    width: min(860px, 100%);
+    width: 100%;
     display: grid;
     grid-template-columns: minmax(240px, 300px) 1fr;
     align-items: center;
