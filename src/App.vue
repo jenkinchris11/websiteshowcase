@@ -353,11 +353,10 @@
         <h2>Frequently Asked Questions</h2>
         <div class="faq-visual" aria-hidden="true">
           <DotLottieVue
-            src="https://lottie.host/acac4f5e-556b-4262-8ede-799058b4b6b3/nuuvrWJoRm.lottie"
+            src="https://lottie.host/08b91e4f-f4ae-4541-be43-a2bdc4e9b21a/bC5RCusNXz.lottie"
             style="width: 240px; height: 240px"
             autoplay
             loop
-            :speed="0.5"
           />
         </div>
         <div class="faq-grid">
