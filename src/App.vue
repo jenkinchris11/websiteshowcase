@@ -351,6 +351,14 @@
     <section class="div9" aria-label="Frequently Asked Questions">
       <div class="faq">
         <h2>Frequently Asked Questions</h2>
+        <div class="faq-visual" aria-hidden="true">
+          <DotLottieVue
+            src="https://lottie.host/acac4f5e-556b-4262-8ede-799058b4b6b3/nuuvrWJoRm.lottie"
+            style="width: 240px; height: 240px"
+            autoplay
+            loop
+          />
+        </div>
         <div class="faq-grid">
           <details class="faq-item">
             <summary>
@@ -582,12 +590,12 @@
     <section class="div5 about" aria-label="About me">
       <div class="about-card">
         <div class="about-visual" aria-hidden="true">
-          <dotlottie-wc
+          <DotLottieVue
             src="https://lottie.host/198792f9-e91a-4773-87a0-4b335ca17a1f/5fCrMBCtzy.lottie"
-            style="width: 300px;height: 300px"
+            style="width: 300px; height: 300px"
             autoplay
             loop
-          ></dotlottie-wc>
+          />
         </div>
         <div class="about-copy">
           <h2>About</h2>
@@ -606,6 +614,7 @@
 
 <script setup>
 import emailjs from '@emailjs/browser'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import ChatWidget from './components/ChatWidget.vue'
@@ -1091,6 +1100,11 @@ grid-row-gap: 0px;
   margin: 0;
   text-align: center;
   font-size: clamp(1.5rem, 2.1vw, 2rem);
+}
+
+.faq-visual {
+  display: flex;
+  justify-content: center;
 }
 
 .faq-grid {
@@ -1792,7 +1806,7 @@ grid-row-gap: 0px;
     place-items: center;
   }
 
-  .about-visual dotlottie-wc {
+  .about-visual :deep(dotlottie-player) {
     max-width: 100%;
     height: auto;
   }
