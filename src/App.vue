@@ -1044,7 +1044,7 @@ grid-row-gap: 0px;
 
 .skyline {
   position: relative;
-  height: clamp(320px, 44vw, 460px);
+  height: clamp(320px, 44vw, 200px);
   overflow: hidden;
   isolation: isolate;
   perspective: 900px;
