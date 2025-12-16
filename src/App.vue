@@ -581,13 +581,23 @@
     </section>
     <section class="div5 about" aria-label="About me">
       <div class="about-card">
-        <h2>About</h2>
-        <p>
-          I'm a solo web developer building websites for small businesses, creatives, and sole traders. You work
-          directly with me—no agency overheads or hand-offs—so decisions stay simple and progress stays quick. I value
-          clear communication, fair pricing, and reliable, modern builds tailored to how you work. If you want a
-          partner who listens, keeps you informed, and delivers on time, that's what I do.
-        </p>
+        <div class="about-visual" aria-hidden="true">
+          <dotlottie-wc
+            src="https://lottie.host/198792f9-e91a-4773-87a0-4b335ca17a1f/5fCrMBCtzy.lottie"
+            style="width: 300px;height: 300px"
+            autoplay
+            loop
+          ></dotlottie-wc>
+        </div>
+        <div class="about-copy">
+          <h2>About</h2>
+          <p>
+            I'm a solo web developer building websites for small businesses, creatives, and sole traders. You work
+            directly with me—no agency overheads or hand-offs—so decisions stay simple and progress stays quick. I
+            value clear communication, fair pricing, and reliable, modern builds tailored to how you work. If you want
+            a partner who listens, keeps you informed, and delivers on time, that's what I do.
+          </p>
+        </div>
       </div>
     </section>
     <ChatWidget />
@@ -1767,12 +1777,29 @@ grid-row-gap: 0px;
   .about-card {
     width: min(860px, 100%);
     display: grid;
-    gap: 12px;
+    grid-template-columns: minmax(240px, 300px) 1fr;
+    align-items: center;
+    gap: clamp(16px, 3vw, 28px);
     padding: clamp(24px, 6vw, 40px);
     border-radius: 20px;
     background: radial-gradient(circle at 10% 20%,rgba(224,175,160,.1),transparent 35%),radial-gradient(circle at 80% 0%,rgba(188,184,177,.12),transparent 25%),#463f3ad1;
     border: 1px solid rgba(244, 243, 238, 0.08);
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+  }
+
+  .about-visual {
+    display: grid;
+    place-items: center;
+  }
+
+  .about-visual dotlottie-wc {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about-copy {
+    display: grid;
+    gap: 8px;
   }
 
   .about h2 {
@@ -1783,6 +1810,18 @@ grid-row-gap: 0px;
     margin: 0;
     color: rgba(244, 243, 238, 0.86);
     line-height: 1.6;
+  }
+
+  @media (max-width: 820px) {
+    .about-card {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .about-copy {
+      justify-items: center;
+    }
   }
 
   .contact-card {
