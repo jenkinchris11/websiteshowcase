@@ -351,6 +351,14 @@
     <section class="div9" aria-label="Frequently Asked Questions">
       <div class="faq">
         <h2>Frequently Asked Questions</h2>
+        <div class="faq-visual" aria-hidden="true">
+          <DotLottieVue
+            src="https://lottie.host/acac4f5e-556b-4262-8ede-799058b4b6b3/nuuvrWJoRm.lottie"
+            style="width: 240px; height: 240px"
+            autoplay
+            loop
+          />
+        </div>
         <div class="faq-grid">
           <details class="faq-item">
             <summary>
@@ -1092,6 +1100,11 @@ grid-row-gap: 0px;
   margin: 0;
   text-align: center;
   font-size: clamp(1.5rem, 2.1vw, 2rem);
+}
+
+.faq-visual {
+  display: flex;
+  justify-content: center;
 }
 
 .faq-grid {
