@@ -1070,7 +1070,7 @@ grid-row-gap: 0px;
   display: grid;
   gap: clamp(14px, 2vw, 20px);
   padding: clamp(22px, 5vw, 38px);
-  background: linear-gradient(145deg, rgba(13, 19, 33, 0.7), rgba(70, 63, 58, 0.7));
+  background: radial-gradient(circle at 10% 20%,rgba(224,175,160,.1),transparent 35%),radial-gradient(circle at 80% 0%,rgba(188,184,177,.12),transparent 25%),#463f3ad1;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   color: #f8f9fb;
@@ -1770,7 +1770,7 @@ grid-row-gap: 0px;
     gap: 12px;
     padding: clamp(24px, 6vw, 40px);
     border-radius: 20px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    background: radial-gradient(circle at 10% 20%,rgba(224,175,160,.1),transparent 35%),radial-gradient(circle at 80% 0%,rgba(188,184,177,.12),transparent 25%),#463f3ad1;
     border: 1px solid rgba(244, 243, 238, 0.08);
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
   }
