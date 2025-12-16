@@ -583,7 +583,7 @@
       <div class="about-card">
         <div class="about-visual" aria-hidden="true">
           <DotLottieVue
-            src="https://lottie.host/198792f9-e91a-4773-87a0-4b335ca17a1f/5fCrMBCtzy.lottie"
+            src="https://lottie.host/d36f0e8d-5dab-487b-aba9-b7acf3507191/MlDPs023r2.lottie"
             style="width: 600px; height: 600px"
             autoplay
             loop
