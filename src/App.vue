@@ -357,6 +357,7 @@
             style="width: 240px; height: 240px"
             autoplay
             loop
+            :speed="0.5"
           />
         </div>
         <div class="faq-grid">
@@ -595,6 +596,7 @@
             style="width: 600px; height: 600px"
             autoplay
             loop
+            :speed="0.5"
           />
         </div>
         <div class="about-copy">
