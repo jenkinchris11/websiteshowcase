@@ -584,7 +584,7 @@
         <div class="about-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/198792f9-e91a-4773-87a0-4b335ca17a1f/5fCrMBCtzy.lottie"
-            style="width: 300px; height: 300px"
+            style="width: 600px; height: 600px"
             autoplay
             loop
           />
