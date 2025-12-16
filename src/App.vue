@@ -254,7 +254,7 @@
           </div>
       </div>
     </section>
-    <section class="div5" aria-label="Website pricing">
+    <section class="div7" aria-label="Website pricing">
       <div class="pricing">
         <h2>Website &amp; Software Services – Affordable Pricing</h2>
         <div class="pricing-grid">
@@ -348,7 +348,7 @@
         </div>
       </div>
     </section>
-    <section class="div7" aria-label="Frequently Asked Questions">
+    <section class="div9" aria-label="Frequently Asked Questions">
       <div class="faq">
         <h2>Frequently Asked Questions</h2>
         <div class="faq-grid">
@@ -527,7 +527,7 @@
         </div>
       </div>
     </section>
-    <section id="contact" class="div9 contact" aria-label="Contact form">
+    <section id="contact" class="div10 contact" aria-label="Contact form">
       <div class="contact-card">
         <div class="contact-header">
           <p class="eyebrow">Get in touch</p>
@@ -579,7 +579,7 @@
         </form>
       </div>
     </section>
-    <section class="div10 about" aria-label="About me">
+    <section class="div5 about" aria-label="About me">
       <div class="about-card">
         <h2>About</h2>
         <p>
