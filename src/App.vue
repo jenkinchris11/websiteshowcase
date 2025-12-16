@@ -1863,7 +1863,7 @@ grid-row-gap: 0px;
     padding: 12px 18px;
     border-radius: 14px;
     border: none;
-    background: linear-gradient(120deg, #463f3a, #8a817c);
+    background: linear-gradient(135deg, rgb(224, 175, 160), rgb(244, 243, 238));
     color: #f4f3ee;
     font-weight: 700;
     letter-spacing: 0.02em;
