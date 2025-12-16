@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@lottiefiles/dotlottie-vue": "^0.10.10",
     "gsap": "^3.14.1",
     "vue": "^3.4.37"
   },
