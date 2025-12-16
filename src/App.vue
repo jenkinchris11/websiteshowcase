@@ -582,12 +582,12 @@
     <section class="div5 about" aria-label="About me">
       <div class="about-card">
         <div class="about-visual" aria-hidden="true">
-          <dotlottie-wc
+          <DotLottieVue
             src="https://lottie.host/198792f9-e91a-4773-87a0-4b335ca17a1f/5fCrMBCtzy.lottie"
-            style="width: 300px;height: 300px"
+            style="width: 300px; height: 300px"
             autoplay
             loop
-          ></dotlottie-wc>
+          />
         </div>
         <div class="about-copy">
           <h2>About</h2>
@@ -606,6 +606,7 @@
 
 <script setup>
 import emailjs from '@emailjs/browser'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import ChatWidget from './components/ChatWidget.vue'
@@ -1792,7 +1793,7 @@ grid-row-gap: 0px;
     place-items: center;
   }
 
-  .about-visual dotlottie-wc {
+  .about-visual :deep(dotlottie-player) {
     max-width: 100%;
     height: auto;
   }
