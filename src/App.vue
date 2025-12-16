@@ -1864,7 +1864,7 @@ grid-row-gap: 0px;
     border-radius: 14px;
     border: none;
     background: linear-gradient(135deg, rgb(224, 175, 160), rgb(244, 243, 238));
-    color: #f4f3ee;
+    color: #463f3a;
     font-weight: 700;
     letter-spacing: 0.02em;
     cursor: pointer;
