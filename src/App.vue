@@ -353,7 +353,7 @@
         <h2>Frequently Asked Questions</h2>
         <div class="faq-visual" aria-hidden="true">
           <DotLottieVue
-            src="https://lottie.host/cb7ea6aa-53ad-4733-94e2-3df5b1a2f480/J1Xgvd6jxP.lottie"
+            src="https://lottie.host/8649139c-771c-4af0-b04f-300e7efc2d57/NVCwrDYwPM.lottie"
             style="width: 240px; height: 240px"
             autoplay
             loop
