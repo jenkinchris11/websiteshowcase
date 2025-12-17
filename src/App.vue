@@ -593,7 +593,6 @@
           <DotLottieVue
             src="https://lottie.host/d36f0e8d-5dab-487b-aba9-b7acf3507191/MlDPs023r2.lottie"
             class="aboutlottie";
-            style="width: 600px; height: 600px"
             autoplay
             loop
             :speed="0.5"
