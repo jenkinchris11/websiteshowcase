@@ -354,6 +354,7 @@
         <div class="faq-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/8649139c-771c-4af0-b04f-300e7efc2d57/NVCwrDYwPM.lottie"
+            style="width: 420px; height: 420px"
             autoplay
             loop
           />
@@ -591,6 +592,7 @@
         <div class="about-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/d36f0e8d-5dab-487b-aba9-b7acf3507191/MlDPs023r2.lottie"
+            style="width: 600px; height: 600px"
             autoplay
             loop
             :speed="0.5"
@@ -1106,11 +1108,6 @@ grid-row-gap: 0px;
   justify-content: center;
 }
 
-.faq-visual :deep(dotlottie-player) {
-  width: 520px;
-  height: 520px;
-  height: auto;
-}
 
 .faq-grid {
   display: grid;
@@ -1809,13 +1806,6 @@ grid-row-gap: 0px;
 .about-visual {
   display: grid;
   place-items: center;
-}
-
-.about-visual :deep(dotlottie-player) {
-  width: 720px;
-  height: 720px;
-  max-width: 100%;
-  height: auto;
 }
 
   .about-copy {
