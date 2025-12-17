@@ -1107,7 +1107,8 @@ grid-row-gap: 0px;
 }
 
 .faq-visual :deep(dotlottie-player) {
-  width: clamp(260px, 70vw, 520px);
+  width: 520px;
+  height: 520px;
   height: auto;
 }
 
@@ -1811,7 +1812,8 @@ grid-row-gap: 0px;
 }
 
 .about-visual :deep(dotlottie-player) {
-  width: clamp(320px, 70vw, 720px);
+  width: 720px;
+  height: 720px;
   max-width: 100%;
   height: auto;
 }
