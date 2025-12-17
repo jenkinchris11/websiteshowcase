@@ -354,6 +354,7 @@
         <div class="faq-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/8649139c-771c-4af0-b04f-300e7efc2d57/NVCwrDYwPM.lottie"
+            class="faqlottie";
             style="width: 420px; height: 420px"
             autoplay
             loop
@@ -592,6 +593,7 @@
         <div class="about-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/d36f0e8d-5dab-487b-aba9-b7acf3507191/MlDPs023r2.lottie"
+            class="aboutlottie";
             style="width: 600px; height: 600px"
             autoplay
             loop
@@ -797,6 +799,19 @@ onBeforeUnmount(() => {
     right: 0;
     max-width: 100vw;
     overflow-x: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .faqlottie {
+  width: clamp(260px, 70vw, 420px);
+  height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .aboutlottie {
+  width: clamp(320px, 70vw, 600px);
+  max-width: 100%;
+  height: auto;
   }
 }
 .lightrope li {
