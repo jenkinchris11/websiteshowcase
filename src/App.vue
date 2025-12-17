@@ -355,7 +355,6 @@
           <DotLottieVue
             src="https://lottie.host/8649139c-771c-4af0-b04f-300e7efc2d57/NVCwrDYwPM.lottie"
             class="faqlottie";
-            style="width: 420px; height: 420px"
             autoplay
             loop
           />
@@ -814,6 +813,15 @@ onBeforeUnmount(() => {
   height: auto;
   }
 }
+.faqlottie {
+  width: 420px; 
+  height: 420px
+}
+.aboutlottie {
+  width: 600px; 
+  height: 600px
+}
+  
 .lightrope li {
   position: relative;
   -webkit-animation-fill-mode: both;
