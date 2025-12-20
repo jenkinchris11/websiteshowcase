@@ -793,7 +793,10 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .lightrope {
-    display: none;
+    left: 0;
+    right: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }
 .faqlottie {
