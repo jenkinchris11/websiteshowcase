@@ -354,7 +354,6 @@
         <div class="faq-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/8649139c-771c-4af0-b04f-300e7efc2d57/NVCwrDYwPM.lottie"
-            class="faqlottie";
             autoplay
             loop
           />
@@ -592,7 +591,6 @@
         <div class="about-visual" aria-hidden="true">
           <DotLottieVue
             src="https://lottie.host/d36f0e8d-5dab-487b-aba9-b7acf3507191/MlDPs023r2.lottie"
-            class="aboutlottie";
             autoplay
             loop
             :speed="0.5"
@@ -799,28 +797,6 @@ onBeforeUnmount(() => {
     overflow-x: hidden;
   }
 }
-@media (max-width: 768px) {
-  .faqlottie {
-  width: clamp(260px, 70vw, 420px);
-  height: auto;
-  }
-}
-@media (max-width: 768px) {
-  .aboutlottie {
-  width: clamp(320px, 70vw, 600px);
-  max-width: 100%;
-  height: auto;
-  }
-}
-.faqlottie {
-  width: 420px; 
-  height: 420px
-}
-.aboutlottie {
-  width: 600px; 
-  height: 600px
-}
-  
 .lightrope li {
   position: relative;
   -webkit-animation-fill-mode: both;
@@ -1130,6 +1106,10 @@ grid-row-gap: 0px;
   justify-content: center;
 }
 
+.faq-visual :deep(dotlottie-player) {
+  width: clamp(260px, 70vw, 420px);
+  height: auto;
+}
 
 .faq-grid {
   display: grid;
@@ -1828,6 +1808,12 @@ grid-row-gap: 0px;
 .about-visual {
   display: grid;
   place-items: center;
+}
+
+.about-visual :deep(dotlottie-player) {
+  width: clamp(320px, 70vw, 600px);
+  max-width: 100%;
+  height: auto;
 }
 
   .about-copy {
