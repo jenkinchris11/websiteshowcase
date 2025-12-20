@@ -743,7 +743,7 @@ onMounted(() => {
   updateIsMobile()
   mobileMediaQuery.addEventListener('change', updateIsMobile)
 
-  isEmailJsReady.value = typeof emailjs?.send === 'function'
+  isEmailJsReady.value = emailjs && typeof emailjs.send === 'function'
 
   resetMouseTilt()
   updateProgress()
