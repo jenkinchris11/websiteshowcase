@@ -578,9 +578,8 @@
               placeholder="What do you need help with?"
             ></textarea>
           </label>
-          <button class="submit" type="submit" :disabled="isSending || (isMobile && !isEmailJsReady)">
+          <button class="submit" type="submit" :disabled="isSending">
             <span v-if="isSending">Sending…</span>
-            <span v-else-if="isMobile && !isEmailJsReady">Preparing…</span>
             <span v-else>Send message</span>
           </button>
           <p v-if="formStatus === 'error'" class="status status--error">{{ formMessage }}</p>
@@ -615,8 +614,8 @@
 </template>
 
 <script setup>
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import emailjs from '@emailjs/browser'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import ChatWidget from './components/ChatWidget.vue'
@@ -626,7 +625,6 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 const skylineRef = ref(null)
 let observer
 let prefersReducedMotion
-let mobileMediaQuery
 const reduceMotion = ref(false)
 let ticking = false
 const contactName = ref('')
@@ -635,11 +633,6 @@ const contactMessage = ref('')
 const formStatus = ref('idle')
 const formMessage = ref('')
 const isSending = ref(false)
-const isMobile = ref(false)
-const isEmailJsReady = ref(false)
-const updateIsMobile = (event) => {
-  isMobile.value = event?.matches ?? mobileMediaQuery?.matches ?? false
-}
 
 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
@@ -739,12 +732,6 @@ onMounted(() => {
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   reduceMotion.value = prefersReducedMotion.matches
 
-  mobileMediaQuery = window.matchMedia('(max-width: 768px)')
-  updateIsMobile()
-  mobileMediaQuery.addEventListener('change', updateIsMobile)
-
-  isEmailJsReady.value = emailjs && typeof emailjs.send === 'function'
-
   resetMouseTilt()
   updateProgress()
   window.addEventListener('scroll', handleScroll, { passive: true })
@@ -766,7 +753,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('resize', updateProgress)
   prefersReducedMotion?.removeEventListener('change', handleReduceMotionChange)
-  mobileMediaQuery?.removeEventListener('change', updateIsMobile)
   if (observer && skylineRef.value) {
     observer.unobserve(skylineRef.value)
   }
@@ -807,31 +793,32 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .lightrope {
-    display: none;
+    left: 0;
+    right: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .faqlottie {
+  width: clamp(260px, 70vw, 420px);
+  height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .aboutlottie {
+  width: clamp(320px, 70vw, 600px);
+  max-width: 100%;
+  height: auto;
   }
 }
 .faqlottie {
-  width: 420px;
+  width: 420px; 
   height: 420px
 }
 .aboutlottie {
-  width: 600px;
+  width: 600px; 
   height: 600px
-}
-
-@media (max-width: 768px) {
-  .faqlottie {
-    width: clamp(260px, 70vw, 420px);
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .aboutlottie {
-    width: clamp(320px, 70vw, 600px);
-    max-width: 100%;
-    height: auto;
-  }
 }
   
 .lightrope li {
