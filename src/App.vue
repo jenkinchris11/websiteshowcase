@@ -615,8 +615,8 @@
 </template>
 
 <script setup>
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import emailjs from '@emailjs/browser'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import ProjectCard from './components/ProjectCard.vue'
 import HeroCanvas from './components/HeroCanvas.vue'
 import ChatWidget from './components/ChatWidget.vue'
