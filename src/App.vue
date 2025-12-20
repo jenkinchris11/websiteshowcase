@@ -799,28 +799,26 @@ onBeforeUnmount(() => {
     overflow-x: hidden;
   }
 }
+@media (max-width: 768px) {
+  .faqlottie {
+  width: clamp(260px, 70vw, 420px);
+  height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .aboutlottie {
+  width: clamp(320px, 70vw, 600px);
+  max-width: 100%;
+  height: auto;
+  }
+}
 .faqlottie {
-  width: 420px;
+  width: 420px; 
   height: 420px
 }
 .aboutlottie {
-  width: 600px;
+  width: 600px; 
   height: 600px
-}
-
-@media (max-width: 768px) {
-  .faqlottie {
-    width: clamp(260px, 70vw, 420px);
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .aboutlottie {
-    width: clamp(320px, 70vw, 600px);
-    max-width: 100%;
-    height: auto;
-  }
 }
   
 .lightrope li {
