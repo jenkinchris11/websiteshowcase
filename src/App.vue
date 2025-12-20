@@ -578,9 +578,8 @@
               placeholder="What do you need help with?"
             ></textarea>
           </label>
-          <button class="submit" type="submit" :disabled="isSending || (isMobile && !isEmailJsReady)">
+          <button class="submit" type="submit" :disabled="isSending">
             <span v-if="isSending">Sending…</span>
-            <span v-else-if="isMobile && !isEmailJsReady">Preparing…</span>
             <span v-else>Send message</span>
           </button>
           <p v-if="formStatus === 'error'" class="status status--error">{{ formMessage }}</p>
@@ -626,7 +625,6 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 const skylineRef = ref(null)
 let observer
 let prefersReducedMotion
-let mobileMediaQuery
 const reduceMotion = ref(false)
 let ticking = false
 const contactName = ref('')
@@ -635,11 +633,6 @@ const contactMessage = ref('')
 const formStatus = ref('idle')
 const formMessage = ref('')
 const isSending = ref(false)
-const isMobile = ref(false)
-const isEmailJsReady = ref(false)
-const updateIsMobile = (event) => {
-  isMobile.value = event?.matches ?? mobileMediaQuery?.matches ?? false
-}
 
 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
@@ -739,12 +732,6 @@ onMounted(() => {
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   reduceMotion.value = prefersReducedMotion.matches
 
-  mobileMediaQuery = window.matchMedia('(max-width: 768px)')
-  updateIsMobile()
-  mobileMediaQuery.addEventListener('change', updateIsMobile)
-
-  isEmailJsReady.value = typeof emailjs?.send === 'function'
-
   resetMouseTilt()
   updateProgress()
   window.addEventListener('scroll', handleScroll, { passive: true })
@@ -766,7 +753,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('resize', updateProgress)
   prefersReducedMotion?.removeEventListener('change', handleReduceMotionChange)
-  mobileMediaQuery?.removeEventListener('change', updateIsMobile)
   if (observer && skylineRef.value) {
     observer.unobserve(skylineRef.value)
   }
