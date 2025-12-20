@@ -70,22 +70,23 @@ onBeforeUnmount(() => {
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
 .container {
-  display: block;
-  max-width: 700px;
+  display: grid;
+  place-items: center;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px;
+  padding: 48px 24px;
   box-sizing: border-box;
   font-family: Fjalla One, sans-serif;
   border-radius: 12px;
+  min-height: 80vh;
 }
 
 .button {
-  float: left;
+  display: inline-flex;
   position: relative;
   bottom: -65px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-10deg);
+  transform: rotate(-10deg);
   color: #e55643;
   text-transform: uppercase;
   opacity: 0;
@@ -95,12 +96,12 @@ onBeforeUnmount(() => {
   background: transparent;
   font: inherit;
   padding: 0;
+  align-self: center;
 }
 
 .button span {
   transform: skew(-10deg);
-  display: block;
-  float: left;
+  display: inline-block;
   text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
 }
 
@@ -110,20 +111,24 @@ h1 {
   font-size: 82px;
   margin: 0;
   letter-spacing: 2px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
 }
 
 .title {
-  transform: translateX(-50%) rotate(-10deg);
-  display: block;
-  float: left;
-  left: 50%;
+  transform: rotate(-10deg);
+  display: inline-flex;
   position: relative;
+  justify-content: center;
 }
 
 .title span {
   transform: skew(-10deg);
-  display: block;
-  float: left;
+  display: inline-block;
   text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px,
     #533d4a 6px 6px;
   min-width: 10px;
@@ -142,6 +147,18 @@ h1 {
 .title:nth-child(3) {
   color: #BCB8B1;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    min-height: 70vh;
+  }
+
+  h1 {
+    font-size: 42px;
+    max-width: 90vw;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: 32px;
